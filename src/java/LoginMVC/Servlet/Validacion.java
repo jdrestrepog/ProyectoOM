@@ -35,7 +35,9 @@ public class Validacion extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         
+        //String user = request.getParameter("user");
         String user = request.getParameter("user");
+        //String pass = request.getParameter("pass");
         String pass = request.getParameter("pass");
         
         Consultas con = new Consultas();
