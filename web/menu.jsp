@@ -13,5 +13,8 @@
     </head>
     <body>
         <h1>Acceso Correcto!</h1>
+        <div>
+            <a href="controladorcliente?accion=listar">Listar Cliente</a>
+        </div>
     </body>
 </html>
