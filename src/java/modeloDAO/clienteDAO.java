@@ -31,7 +31,8 @@ public class clienteDAO implements CRUDCliente{
 
     @Override
     public boolean add(cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Consultas con = new Consultas();
+       return con.agregarCliente(c);
     }
 
     @Override

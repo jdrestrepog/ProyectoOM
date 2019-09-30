@@ -18,6 +18,7 @@
     <body>
         <div>
             <h1>Clientes</h1>
+            <a href="controladorcliente?accion=add">Agregar Cliente</a>
             <table><table border="1">
                     <thead>
                         <tr>
@@ -25,8 +26,8 @@
                             <th>tipodoc</th>
                             <th>numerodoc</th>
                             <th>primernombre</th>
-                            <th>segundonombre</th>
                             <th>primerapellido</th>
+                            <th>Correo</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -44,8 +45,8 @@
                             <td><%= clie.getTipodoc() %></td>
                             <td><%= clie.getNumerodoc() %></td>
                             <td><%= clie.getPrimernombre() %></td>
-                            <td><%= clie.getSegundonombre() %></td>
-                            <td><%= clie.getPrimerapellido() %></td>
+                            <td><%= clie.getPrimerapellido()%></td>
+                            <td><%= clie.getCorreo()%></td>
                             <td>
                                 <a>Editar</a>
                                 <a>Remover</a>
@@ -54,8 +55,6 @@
                         <%}%>
                     </tbody>
                 </table>
-
         </div>
-        
     </body>
 </html>

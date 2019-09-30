@@ -5,6 +5,7 @@
  */
 package LoginMVC.modelo;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,56 +20,76 @@ import java.util.logging.Logger;
  */
 public class Consultas extends Conexion {
 
-    public boolean Autenticacion(String user, String pass) throws SQLException{
+    public boolean Autenticacion(String user, String pass) throws SQLException {
 
-        Statement st=conn.createStatement();
+        Statement st = conn.createStatement();
         ResultSet rs = null;
         //String consulta = "Select * from Usuarios";
         String consulta = "Select * from cliente";
         rs = st.executeQuery(consulta);
 
-        
-            while (rs.next()) {
-                if (user.equals(rs.getString("correo")) && pass.equals(rs.getString("pass"))) {
-                    return true;
-                }
+        while (rs.next()) {
+            if (user.equals(rs.getString("correo")) && pass.equals(rs.getString("pass"))) {
+                return true;
             }
+        }
 
         return false;
     }
-    public List listarcliente(){
-        
-        ArrayList<cliente>list = new ArrayList<>();
+
+    public List listarcliente() {
+
+        ArrayList<cliente> list = new ArrayList<>();
         try {
-            Statement st=conn.createStatement();
+            Statement st = conn.createStatement();
             ResultSet rs = null;
             String consulta = "Select * from cliente";
             rs = st.executeQuery(consulta);
-            
-            
+
             while (rs.next()) {
-               cliente cliente = new cliente();
-               cliente.setIdcliente(rs.getString("idcliente"));
-               cliente.setTipodoc(rs.getString("tipodoc"));
-               cliente.setNumerodoc(rs.getString("numerodoc"));
-               cliente.setPrimernombre(rs.getString("primernombre"));
-               cliente.setSegundonombre(rs.getString("segundonombre"));
-               cliente.setPrimerapellido(rs.getString("primerapellido"));
-               cliente.setCorreo(rs.getString("correo"));
-               cliente.setTelefono(rs.getString("telefono"));
-               cliente.setNomempresa(rs.getString("nomempresa"));
-               cliente.setDireccion(rs.getString("direccion"));
-               cliente.setCodpostal(rs.getString("codpostal"));
-               cliente.setCiudad(rs.getString("ciudad"));
-               cliente.setDepartamento(rs.getString("departamento"));
-               cliente.setPais(rs.getString("pais"));
-             
-               
-               list.add(cliente);
+                cliente cliente = new cliente();
+                cliente.setIdcliente(rs.getString("idcliente"));
+                cliente.setTipodoc(rs.getString("tipodoc"));
+                cliente.setNumerodoc(rs.getString("numerodoc"));
+                cliente.setPrimernombre(rs.getString("primernombre"));
+                cliente.setSegundonombre(rs.getString("segundonombre"));
+                cliente.setPrimerapellido(rs.getString("primerapellido"));
+                cliente.setCorreo(rs.getString("correo"));
+                cliente.setTelefono(rs.getString("telefono"));
+                cliente.setNomempresa(rs.getString("nomempresa"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setCodpostal(rs.getString("codpostal"));
+                cliente.setCiudad(rs.getString("ciudad"));
+                cliente.setDepartamento(rs.getString("departamento"));
+                cliente.setPais(rs.getString("pais"));
+
+                list.add(cliente);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+
+    public boolean agregarCliente(cliente c) {
+        PreparedStatement ps;
+        try {
+            String consulta = "INSERT INTO VentaLociones.cliente (idcliente, tipodoc, numerodoc, "
+                    + "primernombre, primerapellido, correo, telefono, nomempresa, direccion, codpostal, "
+                    + "ciudad, departamento, pais, pass) VALUES ('"
+                    + c.getIdcliente() + "','" + c.getTipodoc() + "','" + c.getNumerodoc() + "','" + c.getPrimernombre() + "','" 
+                    + c.getPrimerapellido()+ "','" + c.getCorreo() + "','" + c.getTelefono() + "','" + c.getNomempresa() + "','" 
+                    + c.getDireccion() + "','" + c.getCodpostal() + "','" + c.getCiudad() + "','" + c.getDepartamento() + "','" 
+                    + c.getPais() + "','"+ c.getPass() + "')";
+            
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            ex.toString();
+            return false;
+        }
+        return true;
     }
 }
