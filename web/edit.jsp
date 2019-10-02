@@ -11,14 +11,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="mycss.css">
         <title>JSP Page</title>
     </head>
     <body>
         <div class="container">
-            <div class="col-lg-6">
+            <div class="col-8">
                 <%
                     clienteDAO dao = new clienteDAO();
-                    String id = request.getParameter("id");            
+                    String id = request.getParameter("id");
                     cliente c = (cliente) dao.list(id);
                 %>
                 <h1>Modificar Persona</h1>
@@ -45,7 +47,6 @@
                     <a href="controladorcliente?accion=listar">Regresar</a>
                 </form>
             </div>
-
         </div>
     </body>
 </html>

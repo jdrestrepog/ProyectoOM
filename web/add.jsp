@@ -9,42 +9,46 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="mycss.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <div>
-            <h1>Agregar cliente</h1>
-            <form action="controladorcliente">
-                ID Cliente: <br>
-                <input type="text"   name="txtidcliente"><br>
-                Tipo Documento: <br>
-                <input type="text"   name="txttipodoc"><br>
-                Numero Documento: <br>
-                <input type="text"   name="txtnumerodoc"><br>
-                Primer Nombre: <br>
-                <input type="text"   name="txtprimernombre"><br>
-                Primer Apellido: <br>
-                <input type="text"   name="txtprimerapellido"><br>
-                Correo: <br>
-                <input type="text"   name="txtcorreo"><br>
-                Telefono: <br>
-                <input type="text"   name="txttelefono"><br>
-                Nombre Empresa: <br>
-                <input type="text"   name="txtnomempresa"><br>
-                Direccion: <br>
-                <input type="text"   name="txtdireccion"><br>
-                Codigo postal: <br>
-                <input type="text"   name="txtcodpostal"><br>
-                Ciudad: <br>
-                <input type="text"   name="txtciudad"><br>
-                Departamento: <br>
-                <input type="text"   name="txdepartamento"><br>
-                Pais: <br>
-                <input type="text"   name="txtpais"><br>
-                Password: <br>
-                <input type="text"   name="txtpass"><br>
-                <input type="submit" name="accion" value="agregar"><br>
-            </form>  
+        <div class="container">
+            <div>
+                <h1>Agregar cliente</h1>
+                <form action="controladorcliente">
+                    ID Cliente: <br>
+                    <input class="form-control" type="text"   name="txtidcliente"><br>
+                    Tipo Documento: <br>
+                    <input class="form-control" type="text"   name="txttipodoc"><br>
+                    Numero Documento: <br>
+                    <input class="form-control" type="text"   name="txtnumerodoc"><br>
+                    Primer Nombre: <br>
+                    <input class="form-control" type="text"   name="txtprimernombre"><br>
+                    Primer Apellido: <br>
+                    <input class="form-control" type="text"   name="txtprimerapellido"><br>
+                    Correo: <br>
+                    <input class="form-control" type="text"   name="txtcorreo"><br>
+                    Telefono: <br>
+                    <input class="form-control" type="text"   name="txttelefono"><br>
+                    Nombre Empresa: <br>
+                    <input class="form-control" type="text"   name="txtnomempresa"><br>
+                    Direccion: <br>
+                    <input class="form-control" type="text"   name="txtdireccion"><br>
+                    Codigo postal: <br>
+                    <input class="form-control" type="text"   name="txtcodpostal"><br>
+                    Ciudad: <br>
+                    <input class="form-control" type="text"   name="txtciudad"><br>
+                    Departamento: <br>
+                    <input class="form-control" type="text"   name="txdepartamento"><br>
+                    Pais: <br>
+                    <input class="form-control" type="text"   name="txtpais"><br>
+                    Password: <br>
+                    <input type="text"   name="txtpass"><br>
+                    <input class="btn btn-primary" type="submit" name="accion" value="agregar"><br>
+                </form>  
+            </div>
         </div>
     </body>
 </html>

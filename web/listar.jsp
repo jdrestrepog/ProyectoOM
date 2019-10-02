@@ -13,22 +13,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="mycss.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <div>
+        <div class="container">
             <h1>Clientes</h1>
-            <a href="controladorcliente?accion=add">Agregar Cliente</a>
-            <table><table border="1">
+            <a class="btn btn-success" href="controladorcliente?accion=add">Agregar Cliente</a>
+            <br>
+            <br>
+            <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>idcliente</th>
-                            <th>tipodoc</th>
-                            <th>numerodoc</th>
-                            <th>primernombre</th>
-                            <th>primerapellido</th>
-                            <th>Correo</th>
-                            <th>Acciones</th>
+                            <th class="text-center">ID Cliente</th>
+                            <th class="text-center">Tipo Documento</th>
+                            <th class="text-center">Número de Documento</th>
+                            <th class="text-center">Primer nombre</th>
+                            <th class="text-center">Primer Apellido</th>
+                            <th class="text-center">Correo</th>
+                            <th class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <%
@@ -41,15 +45,15 @@
                     %>
                     <tbody>
                         <tr>
-                            <td><%= clie.getIdcliente() %></td>
-                            <td><%= clie.getTipodoc() %></td>
-                            <td><%= clie.getNumerodoc() %></td>
-                            <td><%= clie.getPrimernombre() %></td>
-                            <td><%= clie.getPrimerapellido()%></td>
-                            <td><%= clie.getCorreo()%></td>
+                            <td class="text-center"><%= clie.getIdcliente() %></td>
+                            <td class="text-center"><%= clie.getTipodoc() %></td>
+                            <td class="text-center"><%= clie.getNumerodoc() %></td>
+                            <td class="text-center"><%= clie.getPrimernombre() %></td>
+                            <td class="text-center"><%= clie.getPrimerapellido()%></td>
+                            <td class="text-center"><%= clie.getCorreo()%></td>
                             <td>
-                                <a href="controladorcliente?accion=Editar&id=<%= clie.getIdcliente() %>">Editar</a>
-                                <a>Remover</a>
+                                <a class="btn btn-warning" href="controladorcliente?accion=Editar&id=<%= clie.getIdcliente() %>">Editar</a>
+                                <a class="btn btn-danger" href="controladorcliente?accion=Eliminar&id=<%= clie.getIdcliente() %>">Eliminar</a>
                             </td>
                         </tr>
                         <%}%>

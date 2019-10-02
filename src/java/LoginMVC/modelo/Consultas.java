@@ -134,4 +134,16 @@ public class Consultas extends Conexion {
         }
         return false;
     }
+
+    public boolean eliminar(String idcliente) {
+        PreparedStatement ps;
+        String consulta = "DELETE FROM `VentaLociones`.`cliente` where idcliente=" + idcliente;
+
+        try {
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
+    }
 }

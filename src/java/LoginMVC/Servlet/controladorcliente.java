@@ -117,6 +117,11 @@ public class controladorcliente extends HttpServlet {
             dao.edit(c);
             
             acceso = listar;
+        }else if (action.equalsIgnoreCase("Eliminar")) {
+            String id = request.getParameter("id");
+            c.setIdcliente(id);
+            dao.eliminar(id);
+            acceso = listar;
         }
 
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
