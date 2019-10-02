@@ -77,19 +77,61 @@ public class Consultas extends Conexion {
             String consulta = "INSERT INTO VentaLociones.cliente (idcliente, tipodoc, numerodoc, "
                     + "primernombre, primerapellido, correo, telefono, nomempresa, direccion, codpostal, "
                     + "ciudad, departamento, pais, pass) VALUES ('"
-                    + c.getIdcliente() + "','" + c.getTipodoc() + "','" + c.getNumerodoc() + "','" + c.getPrimernombre() + "','" 
-                    + c.getPrimerapellido()+ "','" + c.getCorreo() + "','" + c.getTelefono() + "','" + c.getNomempresa() + "','" 
-                    + c.getDireccion() + "','" + c.getCodpostal() + "','" + c.getCiudad() + "','" + c.getDepartamento() + "','" 
-                    + c.getPais() + "','"+ c.getPass() + "')";
-            
+                    + c.getIdcliente() + "','" + c.getTipodoc() + "','" + c.getNumerodoc() + "','" + c.getPrimernombre() + "','"
+                    + c.getPrimerapellido() + "','" + c.getCorreo() + "','" + c.getTelefono() + "','" + c.getNomempresa() + "','"
+                    + c.getDireccion() + "','" + c.getCodpostal() + "','" + c.getCiudad() + "','" + c.getDepartamento() + "','"
+                    + c.getPais() + "','" + c.getPass() + "')";
+
             ps = conn.prepareStatement(consulta);
             ps.executeUpdate();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
             ex.toString();
             return false;
         }
         return true;
+    }
+
+    public cliente list(String idcliente) {
+        cliente c = new cliente();
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = "SELECT * FROM VentaLociones.cliente where idcliente ='" + idcliente + "'";
+            rs = st.executeQuery(consulta);
+            while (rs.next()) {
+                c.setIdcliente(rs.getString("idcliente"));
+                c.setTipodoc(rs.getString("tipodoc"));
+                c.setNumerodoc(rs.getString("numerodoc"));
+                c.setPrimernombre(rs.getString("primernombre"));
+                c.setSegundonombre(rs.getString("segundonombre"));
+                c.setPrimerapellido(rs.getString("primerapellido"));
+                c.setCorreo(rs.getString("correo"));
+                c.setTelefono(rs.getString("telefono"));
+
+            }
+        } catch (Exception e) {
+        }
+        return c;
+    }
+
+    public boolean edit(cliente c) {
+        PreparedStatement ps;
+
+        //String sql="update persona set DNI='"+per.getDni()+"',Nombres='"+per.getNom()+"'where Id="+per.getId();
+        String consulta = "UPDATE `VentaLociones`.`cliente` SET `idcliente` = ' "
+                + c.getIdcliente() + "', `tipodoc` = '" + c.getTipodoc() + "', `numerodoc` = '"
+                + c.getNumerodoc() + "', `primernombre` = '" + c.getPrimernombre() + "', `segundonombre` = '"
+                + c.getSegundonombre() + "', `primerapellido` = '" + c.getPrimerapellido() + "', `correo` = '"
+                + c.getCorreo() + "', `telefono` = '" + c.getTelefono() + "'WHERE (`idcliente` = '"
+                + c.getIdcliente() + "')";
+
+        try {
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
     }
 }

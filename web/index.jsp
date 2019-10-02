@@ -20,24 +20,23 @@
     <body class="text-center">
         <form action="Autenticacion" method="post"  class="px-4 py-3" align="center">
             <div class="form-group" justify-content-center>
-                <label for="exampleDropdownFormEmail1">Email address</label>
-                <input type="email" name="user" id="user" class="form-control" placeholder="email@example.com">
+                <label for="exampleDropdownFormEmail1">Usuario:</label>
+                <input class="center-block" type="email" name="user" id="user" class="form-control" placeholder="email@ejemplo.com">
             </div>
             <div class="form-group">
-                <label for="exampleDropdownFormPassword1">Password</label>
-                <input type="password" name="pass" id="user" class="form-control" placeholder="Password">
+                <label for="exampleDropdownFormPassword1">Contraseña</label>
+                <input class="center-block" type="password" name="pass" id="user" class="form-control" placeholder="Contraseña">
             </div>
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                <input class="center-block" type="checkbox" class="form-check-input" id="dropdownCheck">
                 <label class="form-check-label" for="dropdownCheck">
-                    Remember me
+                    Recordarme
                 </label>
             </div>
-            <button type="submit" name="Entrar" id="Entrar" value="Entrar" class="btn btn-primary">Sign in</button>
+            <button type="submit" name="Entrar" id="Entrar" value="Entrar" class="btn btn-primary">Entrar</button>
         </form>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">New around here? Sign up</a>
-        <a class="dropdown-item" href="#">Forgot password?</a>
-
+        <a class="dropdown-item" href="#">Registrarse</a>
+        <a class="dropdown-item" href="#">Olvidaste tu contraseña?</a>
     </body>
 </html>

@@ -1,9 +1,5 @@
-form {
-  
-    
-  width  : 740px;
-  height : 498px;
-  margin : 0 auto;
-  align-items: center;
-  background: #FFF url(background.jpg);
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }

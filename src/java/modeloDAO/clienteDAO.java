@@ -25,8 +25,9 @@ public class clienteDAO implements CRUDCliente{
     }
 
     @Override
-    public cliente list(int idcliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public cliente list(String idcliente) {
+        Consultas c = new Consultas();
+        return c.list(idcliente);
     }
 
     @Override
@@ -37,11 +38,12 @@ public class clienteDAO implements CRUDCliente{
 
     @Override
     public boolean edit(cliente c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Consultas con = new Consultas();
+       return con.edit(c);
     }
 
     @Override
-    public boolean eliminar(int idcliente) {
+    public boolean eliminar(String idcliente) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

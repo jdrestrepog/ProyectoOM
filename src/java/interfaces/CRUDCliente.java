@@ -14,8 +14,8 @@ import java.util.List;
  */
 public interface CRUDCliente {
     public List listar();
-    public cliente list(int idcliente);
+    public cliente list(String idcliente);
     public boolean add(cliente c);
     public boolean edit(cliente c);
-    public boolean eliminar(int idcliente);
+    public boolean eliminar(String idcliente);
 }

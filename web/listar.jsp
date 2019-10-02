@@ -48,7 +48,7 @@
                             <td><%= clie.getPrimerapellido()%></td>
                             <td><%= clie.getCorreo()%></td>
                             <td>
-                                <a>Editar</a>
+                                <a href="controladorcliente?accion=Editar&id=<%= clie.getIdcliente() %>">Editar</a>
                                 <a>Remover</a>
                             </td>
                         </tr>
