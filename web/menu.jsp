@@ -18,6 +18,15 @@
         <br>
         <div class="container">
             <a class="btn btn-success btn-lg" href="controladorcliente?accion=listar">Listar Cliente</a>
+            <br>
+            <br>
+            <a class="btn btn-success btn-lg" href="controladorcliente?accion=listarp">Listar Proveedor</a>
+            <br>
+            <br>
+            <a class="btn btn-success btn-lg" href="controladorcliente?accion=listarprod">Listar Producto</a>
+            <br>
+            <br>
+            <a class="btn btn-success btn-lg" href="controladorcliente?accion=listarinv">Generar Inventario</a>
         </div>
     </body>
 </html>

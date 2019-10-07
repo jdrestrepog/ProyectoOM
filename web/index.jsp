@@ -26,7 +26,7 @@
                     <h2 class="text-center">Bienvenido</h2>
                     <img class="img-fluid mx-auto d-block rounded"
                          src="https://picsum.photos/id/870/300/200" />
-                    <form action="Autenticacion" method="post">
+                    <form action="Autenticacion">
                         <div class="form-group">
                             <label for="correo">Correo</label>
                             <input id="correo" name="user"
@@ -39,13 +39,9 @@
                                    class="form-control" type="password"
                                    placeholder="Contraseña">
                         </div>
-                        <button type="submit" name="Entrar" class="btn btn-primary mb-2">
-                            Entrar
-                        </button>
+                        <input class="btn btn-primary mb-2" type="submit" name="accion" value="Entrar">
                         <br>
-                        <a href="#">Registrarse</a>
-                        <br>
-                        <a href="#">Olvidó su contraseña ?</a>
+                        <a href="Autenticacion?accion=Registrarse">Registrarse</a>
                     </form>
                 </div>
             </div>

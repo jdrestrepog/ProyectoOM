@@ -5,7 +5,9 @@
  */
 package LoginMVC.Servlet;
 
+import LoginMVC.modelo.Consultas;
 import LoginMVC.modelo.cliente;
+import LoginMVC.modelo.proveedor;
 import com.sun.corba.se.spi.protocol.RequestDispatcherDefault;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,8 +25,16 @@ import modeloDAO.clienteDAO;
 public class controladorcliente extends HttpServlet {
 
     String listar = "listar.jsp";
-    String add = "add.jsp";
-    String edit = "edit.jsp";
+    String add    = "add.jsp";
+    String edit   = "edit.jsp";
+    
+    String listarp = "listarp.jsp";
+    String addp    = "addp.jsp";
+    String editp   = "editp.jsp";
+    
+    
+    
+    
     cliente c = new cliente();
     clienteDAO dao = new clienteDAO();
 
@@ -36,27 +46,32 @@ public class controladorcliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
         String acceso = "";
         String action = request.getParameter("accion");
+        
         if (action.equalsIgnoreCase("listar")) {
             acceso = listar;
         } else if (action.equalsIgnoreCase("add")) {
             acceso = add;
         } else if (action.equalsIgnoreCase("Agregar")) {
-            String idcliente = request.getParameter("txtidcliente");
-            String tipodoc = request.getParameter("txttipodoc");
-            String numerodoc = request.getParameter("txtnumerodoc");
-            String primernombre = request.getParameter("txtprimernombre");
+            String idcliente      = request.getParameter("txtidcliente");
+            String tipodoc        = request.getParameter("txttipodoc");
+            String numerodoc      = request.getParameter("txtnumerodoc");
+            String primernombre   = request.getParameter("txtprimernombre");
+            String segundonombre  = request.getParameter("txtsegundonombre");
             String primerapellido = request.getParameter("txtprimerapellido");
-            String correo = request.getParameter("txtcorreo");
-            String telefono = request.getParameter("txttelefono");
-            String nomempresa = request.getParameter("txtnomempresa");
-            String direccion = request.getParameter("txtdireccion");
-            String codpostal = request.getParameter("txtcodpostal");
-            String ciudad = request.getParameter("txtciudad");
-            String departamento = request.getParameter("txdepartamento");
-            String pais = request.getParameter("txtpais");
-            String pass = request.getParameter("txtpass");
+            String segundoapellido = request.getParameter("txtsegundoapellido");
+            String correo         = request.getParameter("txtcorreo");
+            String telefono       = request.getParameter("txttelefono");
+            String nomempresa     = request.getParameter("txtnomempresa");
+            String direccion      = request.getParameter("txtdireccion");
+            String codpostal      = request.getParameter("txtcodpostal");
+            String ciudad         = request.getParameter("txtciudad");
+            String departamento   = request.getParameter("txdepartamento");
+            String pais           = request.getParameter("txtpais");
+            String pass           = request.getParameter("txtpass");
+            String tipocliente    = request.getParameter("txttipocliente");
 
             c.setIdcliente(idcliente);
             c.setTipodoc(tipodoc);
@@ -82,21 +97,21 @@ public class controladorcliente extends HttpServlet {
             acceso = edit;
         } else if (action.equalsIgnoreCase("Actualizar")) {
                
-            String idcliente = request.getParameter("txtidcliente"); 
-            String tipodoc = request.getParameter("txttipodoc");
-            String numerodoc = request.getParameter("txtnumerodoc");
-            String primernombre = request.getParameter("txtprimernombre");
-            String segundonombre = request.getParameter("txtsegundonombre");
+            String idcliente      = request.getParameter("txtidcliente"); 
+            String tipodoc        = request.getParameter("txttipodoc");
+            String numerodoc      = request.getParameter("txtnumerodoc");
+            String primernombre   = request.getParameter("txtprimernombre");
+            String segundonombre  = request.getParameter("txtsegundonombre");
             String primerapellido = request.getParameter("txtprimerapellido");
-            String correo = request.getParameter("txtcorreo");
-            String telefono = request.getParameter("txttelefono");
-            String nomempresa = request.getParameter("txtnomempresa");
-            String direccion = request.getParameter("txtdireccion");
-            String codpostal = request.getParameter("txtcodpostal");
-            String ciudad = request.getParameter("txtciudad");
-            String departamento = request.getParameter("txdepartamento");
-            String pais = request.getParameter("txtpais");
-            String pass = request.getParameter("txtpass");
+            String correo         = request.getParameter("txtcorreo");
+            String telefono       = request.getParameter("txttelefono");
+            String nomempresa     = request.getParameter("txtnomempresa");
+            String direccion      = request.getParameter("txtdireccion");
+            String codpostal      = request.getParameter("txtcodpostal");
+            String ciudad         = request.getParameter("txtciudad");
+            String departamento   = request.getParameter("txdepartamento");
+            String pais           = request.getParameter("txtpais");
+            String pass           = request.getParameter("txtpass");
 
             c.setIdcliente(idcliente);
             c.setTipodoc(tipodoc);
@@ -122,6 +137,84 @@ public class controladorcliente extends HttpServlet {
             c.setIdcliente(id);
             dao.eliminar(id);
             acceso = listar;
+        }else if (action.equalsIgnoreCase("addp")) {
+            acceso = addp;
+        }
+        else if (action.equalsIgnoreCase("listarp")) {
+            acceso = listarp;
+        }else if (action.equalsIgnoreCase("Editarp")) {
+            request.setAttribute("idp", request.getParameter("idp"));
+            acceso = editp;
+        } else if (action.equalsIgnoreCase("Actualizarp")) {
+            proveedor p = new proveedor();
+            Consultas con = new Consultas();
+            
+            String idproveedor     = request.getParameter("txtidproveedor"); 
+            String nombreproveedor = request.getParameter("txtnombreproveedor"); 
+            String direccion       = request.getParameter("txtdireccion"); 
+            String ciudad          = request.getParameter("txtciudad"); 
+            String codpostal       = request.getParameter("txtcodpostal"); 
+            String provincia       = request.getParameter("txtprovincia"); 
+            String pais            = request.getParameter("txtpais"); 
+            String telefono        = request.getParameter("txttelefono"); 
+            String fax             = request.getParameter("txtfax"); 
+            String correo          = request.getParameter("txtcorreo"); 
+            
+            p.setIdproveedor(idproveedor);
+            p.setNombre(nombreproveedor);
+            p.setDireccion(direccion);
+            p.setCiudad(ciudad);
+            p.setCodpostal(codpostal);
+            p.setProvincia(provincia);
+            p.setPais(pais);
+            p.setNumtel(telefono);
+            p.setNumfax(fax);
+            p.setCorreo(correo);
+                  
+            con.editp(p);
+            
+            acceso = listarp;
+        }else if (action.equalsIgnoreCase("agregarp")) {
+            proveedor p = new proveedor();
+            Consultas con = new Consultas();
+            
+            String idproveedor     = request.getParameter("txtidproveedor"); 
+            String nombreproveedor = request.getParameter("txtnombre"); 
+            String direccion       = request.getParameter("txtdireccion"); 
+            String ciudad          = request.getParameter("txtciudad"); 
+            String codpostal       = request.getParameter("txtcodpostal"); 
+            String provincia       = request.getParameter("txtprovincia"); 
+            String pais            = request.getParameter("txtpais"); 
+            String telefono        = request.getParameter("txttelefono"); 
+            String fax             = request.getParameter("txtnumfax"); 
+            String correo          = request.getParameter("txtcorreo"); 
+            
+            p.setIdproveedor(idproveedor);
+            p.setNombre(nombreproveedor);
+            p.setDireccion(direccion);
+            p.setCiudad(ciudad);
+            p.setCodpostal(codpostal);
+            p.setProvincia(provincia);
+            p.setPais(pais);
+            p.setNumtel(telefono);
+            p.setNumfax(fax);
+            p.setCorreo(correo);
+                  
+            con.agregarproveedor(p);
+            
+            acceso = listarp;
+        }else if (action.equalsIgnoreCase("Eliminarp")) {
+            String id = request.getParameter("idp");
+            Consultas con = new Consultas();
+            
+            proveedor p = new proveedor();
+            p.setIdproveedor(id);
+            
+            con.eliminarp(id);
+            
+            //c.setIdcliente(id);
+            //dao.eliminar(id);
+            acceso = listarp;
         }
 
         RequestDispatcher vista = request.getRequestDispatcher(acceso);

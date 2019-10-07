@@ -26,8 +26,12 @@
                     <input class="form-control" type="text"   name="txtnumerodoc"><br>
                     Primer Nombre: <br>
                     <input class="form-control" type="text"   name="txtprimernombre"><br>
+                    Segundo Nombre: <br>
+                    <input class="form-control" type="text"   name="txtsegundonombre"><br>
                     Primer Apellido: <br>
                     <input class="form-control" type="text"   name="txtprimerapellido"><br>
+                    Segundo Apellido: <br>
+                    <input class="form-control" type="text"   name="txtsegundoapellido"><br>
                     Correo: <br>
                     <input class="form-control" type="text"   name="txtcorreo"><br>
                     Telefono: <br>
@@ -45,7 +49,11 @@
                     Pais: <br>
                     <input class="form-control" type="text"   name="txtpais"><br>
                     Password: <br>
-                    <input type="text"   name="txtpass"><br>
+                    <input type="text"   name="txtpass"> <br>
+                    <br>
+                    Tipo Cliente: <br>
+                    <input type="text"   name="txttipocliente"> <br>
+                    <br>
                     <input class="btn btn-primary" type="submit" name="accion" value="agregar"><br>
                 </form>  
             </div>

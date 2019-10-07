@@ -8,6 +8,10 @@
         <servlet-name>controladorcliente</servlet-name>
         <servlet-class>LoginMVC.Servlet.controladorcliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>controladorusuario</servlet-name>
+        <servlet-class>LoginMVC.Servlet.controladorusuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Validacion</servlet-name>
         <url-pattern>/Autenticacion</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>controladorcliente</servlet-name>
         <url-pattern>/controladorcliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>controladorusuario</servlet-name>
+        <url-pattern>/controladorusuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

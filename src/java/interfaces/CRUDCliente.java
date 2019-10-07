@@ -13,7 +13,7 @@ import java.util.List;
  * @author juan
  */
 public interface CRUDCliente {
-    public List listar();
+    public List    listar();
     public cliente list(String idcliente);
     public boolean add(cliente c);
     public boolean edit(cliente c);

@@ -10,12 +10,14 @@ package LoginMVC.modelo;
  * @author juan
  */
 public class cliente {
+
     String idcliente;
-    String   tipodoc;
+    String tipodoc;
     String numerodoc;
     String primernombre;
     String segundonombre;
     String primerapellido;
+    String segundoapellido;
     String correo;
     String telefono;
     String nomempresa;
@@ -26,15 +28,20 @@ public class cliente {
     String pais;
     String pass;
     String foto;
-    float descuento;
+    float  descuento;
+    String tipocliente;
 
-    public cliente(String idcliente, String tipodoc, String numerodoc, String primernombre, String segundonombre, String primerapellido, String correo, String telefono, String nomempresa, String direccion, String codpostal, String ciudad, String departamento, String pais, String pass, String foto, float descuento) {
+    public cliente() {
+    }
+
+    public cliente(String idcliente, String tipodoc, String numerodoc, String primernombre, String segundonombre, String primerapellido, String segundoapellido, String correo, String telefono, String nomempresa, String direccion, String codpostal, String ciudad, String departamento, String pais, String pass, String foto, float descuento, String tipocliente) {
         this.idcliente = idcliente;
         this.tipodoc = tipodoc;
         this.numerodoc = numerodoc;
         this.primernombre = primernombre;
         this.segundonombre = segundonombre;
         this.primerapellido = primerapellido;
+        this.segundoapellido = segundoapellido;
         this.correo = correo;
         this.telefono = telefono;
         this.nomempresa = nomempresa;
@@ -46,11 +53,9 @@ public class cliente {
         this.pass = pass;
         this.foto = foto;
         this.descuento = descuento;
+        this.tipocliente = tipocliente;
     }
-    
-    public cliente(){
-        
-    }
+
     public String getIdcliente() {
         return idcliente;
     }
@@ -73,6 +78,10 @@ public class cliente {
 
     public String getPrimerapellido() {
         return primerapellido;
+    }
+
+    public String getSegundoapellido() {
+        return segundoapellido;
     }
 
     public String getCorreo() {
@@ -119,6 +128,10 @@ public class cliente {
         return descuento;
     }
 
+    public String getTipocliente() {
+        return tipocliente;
+    }
+
     public void setIdcliente(String idcliente) {
         this.idcliente = idcliente;
     }
@@ -141,6 +154,10 @@ public class cliente {
 
     public void setPrimerapellido(String primerapellido) {
         this.primerapellido = primerapellido;
+    }
+
+    public void setSegundoapellido(String segundoapellido) {
+        this.segundoapellido = segundoapellido;
     }
 
     public void setCorreo(String correo) {
@@ -186,5 +203,12 @@ public class cliente {
     public void setDescuento(float descuento) {
         this.descuento = descuento;
     }
+
+    public void setTipocliente(String tipocliente) {
+        this.tipocliente = tipocliente;
+    }
+    
+    
+    
     
 }

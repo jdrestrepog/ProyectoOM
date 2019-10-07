@@ -34,6 +34,9 @@ public class proveedor {
         this.correo = correo;
     }
 
+    public proveedor() {
+    }
+
     public String getIdproveedor() {
         return idproveedor;
     }
