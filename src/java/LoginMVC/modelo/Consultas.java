@@ -5,6 +5,11 @@
  */
 package LoginMVC.modelo;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.Buffer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -253,8 +259,31 @@ public class Consultas extends Conexion {
             String consulta = "INSERT INTO VentaLociones.proveedor (idproveedor, nombre, direccion, "
                     + "ciudad, codpostal, provincia, pais, numtel, numfax, correo ) VALUES ('"
                     + p.getIdproveedor() + "','" + p.getNombre() + "','" + p.getDireccion() + "','" + p.getCiudad() + "','"
-                    + p.getCodpostal() + "','" + p.getProvincia() + "','" + p.getPais() + "','" + p.getNumtel() + "','" + p.getNumfax() + "','" 
+                    + p.getCodpostal() + "','" + p.getProvincia() + "','" + p.getPais() + "','" + p.getNumtel() + "','" + p.getNumfax() + "','"
                     + p.getCorreo() + "')";
+
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            ex.toString();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean agregarproducto(producto p) {
+        PreparedStatement ps;
+        try {
+            String consulta = "INSERT INTO VentaLociones.producto (idproducto, marca, nombre, "
+                    + "referencia, descripcion, aniolanzamiento, familiaolf, notasalida, notacorazon, "
+                    + "notafondo, categoria, tipo, mililitros, onzas, uso, preciocomp, precioventa, "
+                    + "descuento, preciodesc, oferta ) VALUES ('"
+                    + p.getIdproducto() + "','" + p.getMarca() + "','" + p.getNombre() + "','" + p.getReferencia() + "','"
+                    + p.getDescripcion() + "','" + p.getAniolanzamiento() + "','" + p.getFamiliaolf() + "','" + p.getNotasalida() + "','" + p.getNotacorazon() + "','"
+                    + p.getNotafondo() + "','" + p.getCategoria() + "','" + p.getTipo() + "','" + p.getMililitros() + "','" + p.getOnzas() + "','"
+                    + p.getUso() + "','" + p.getPreciocomp() + "','" + p.getPrecioventa() + "','" + p.getDescuento() + "','" + p.getPreciodesc() + "','" + p.getOferta() + "');";
 
             ps = conn.prepareStatement(consulta);
             ps.executeUpdate();
@@ -277,5 +306,176 @@ public class Consultas extends Conexion {
         } catch (Exception e) {
         }
         return false;
+    }
+
+    public List listarproducto() {
+
+        ArrayList<producto> list = new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = "Select * from producto";
+            rs = st.executeQuery(consulta);
+
+            while (rs.next()) {
+                producto prod = new producto();
+
+                prod.setIdproducto(rs.getString("idproducto"));
+                prod.setMarca(rs.getString("marca"));
+                prod.setNombre(rs.getString("nombre"));
+                prod.setReferencia(rs.getString("referencia"));
+                prod.setDescripcion(rs.getString("descripcion"));
+                prod.setAniolanzamiento(rs.getString("aniolanzamiento"));
+                prod.setFamiliaolf(rs.getString("familiaolf"));
+                prod.setNotasalida(rs.getString("notasalida"));
+                prod.setNotacorazon(rs.getString("notacorazon"));
+                prod.setNotafondo(rs.getString("notafondo"));
+                prod.setCategoria(rs.getString("categoria"));
+                prod.setTipo(rs.getString("tipo"));
+                prod.setMililitros(rs.getString("mililitros"));
+                prod.setOnzas(rs.getString("onzas"));
+                prod.setUso(rs.getString("uso"));
+                prod.setPreciocomp(rs.getFloat("preciocomp"));
+                prod.setPrecioventa(rs.getFloat("precioventa"));
+                prod.setDescuento(rs.getFloat("descuento"));
+                prod.setPreciodesc(rs.getFloat("preciodesc"));
+                prod.setOferta(rs.getString("oferta"));
+
+                list.add(prod);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public boolean eliminarprod(String idproducto) {
+        PreparedStatement ps;
+        String consulta = "DELETE FROM `VentaLociones`.`producto` where idproducto=" + idproducto;
+
+        try {
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    public producto listprod(String idproducto) {
+        producto p = new producto();
+
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = "SELECT * FROM VentaLociones.producto where idproducto ='" + idproducto + "'";
+            rs = st.executeQuery(consulta);
+            while (rs.next()) {
+
+                p.setIdproducto(rs.getString("idproducto"));
+                p.setMarca(rs.getString("marca"));
+                p.setNombre(rs.getString("nombre"));
+                p.setReferencia(rs.getString("referencia"));
+                p.setDescripcion(rs.getString("descripcion"));
+                p.setAniolanzamiento(rs.getString("aniolanzamiento"));
+                p.setFamiliaolf(rs.getString("familiaolf"));
+                p.setNotasalida(rs.getString("notasalida"));
+                p.setNotacorazon(rs.getString("notacorazon"));
+                p.setNotafondo(rs.getString("notafondo"));
+                p.setCategoria(rs.getString("categoria"));
+                p.setTipo(rs.getString("tipo"));
+                p.setMililitros(rs.getString("mililitros"));
+                p.setOnzas(rs.getString("onzas"));
+                p.setUso(rs.getString("uso"));
+                p.setPreciocomp(rs.getFloat("preciocomp"));
+                p.setPrecioventa(rs.getFloat("precioventa"));
+                p.setDescuento(rs.getFloat("descuento"));
+                p.setPreciodesc(rs.getFloat("preciodesc"));
+                p.setOferta(rs.getString("oferta"));
+
+            }
+        } catch (Exception e) {
+        }
+        return p;
+    }
+
+    public boolean editprod(producto p) {
+        PreparedStatement ps;
+
+        String consulta = "UPDATE `VentaLociones`.`producto` SET `idproducto` = ' "
+                + p.getIdproducto() + "', `marca` = '" + p.getMarca() + "', `nombre` = '"
+                + p.getNombre() + "', `referencia` = '" + p.getReferencia() + "', `descripcion` = '"
+                + p.getDescripcion() + "', `aniolanzamiento` = '" + p.getAniolanzamiento() + "', `familiaolf` = '"
+                + p.getFamiliaolf() + "', `notasalida` = '" + p.getNotasalida() + "', `notacorazon` = '"
+                + p.getNotacorazon() + "', `notafondo` = '" + p.getNotafondo() + "', `categoria` = '"
+                + p.getCategoria() + "', `tipo` = '" + p.getTipo() + "', `mililitros` = '"
+                + p.getMililitros() + "', `onzas` = '" + p.getOnzas() + "', `uso` = '"
+                + p.getUso() + "', `preciocomp` = '" + p.getPreciocomp() + "', `precioventa` = '"
+                + p.getPrecioventa() + "', `descuento` = '" + p.getDescuento() + "', `preciodesc` = '"
+                + p.getPreciodesc() + "', `oferta` = '" + p.getOferta() + " 'WHERE (`idproducto` = '"
+                + p.getIdproducto() + "');";
+
+        try {
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    public List listarinventario() {
+
+        ArrayList<inventario> list = new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = "Select * from productoprov";
+            rs = st.executeQuery(consulta);
+
+            while (rs.next()) {
+                inventario p = new inventario();
+
+                p.setIdproducto(rs.getString("idproducto"));
+                p.setIdproveedor(rs.getString("idproveedor"));
+                p.setCantidad(rs.getString("cantidad"));
+
+                list.add(p);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public void listarimg(String idproducto, HttpServletResponse response) {
+
+        producto p = new producto();
+        InputStream inputStream= null;
+        OutputStream outputStream = null;
+        
+        BufferedInputStream bufferedInputStream = null;
+        BufferedOutputStream bufferedOutputStream = null;
+        
+        
+        try {
+            outputStream = response.getOutputStream();
+            
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = "SELECT * FROM VentaLociones.producto where idproducto ='" + idproducto + "'";
+            rs = st.executeQuery(consulta);
+            if (rs.next()) {
+                inputStream = rs.getBinaryStream("foto1");
+            }
+            bufferedInputStream = new BufferedInputStream(inputStream);
+            bufferedOutputStream = new BufferedOutputStream(outputStream);
+            int i=0;
+            
+            while ((i = bufferedInputStream.read()) != -1) {                
+                bufferedOutputStream.write(i);
+            }
+            
+            
+        } catch (Exception e) {
+        }
     }
 }

@@ -52,8 +52,8 @@
                             <td class="text-center"><%= clie.getPrimerapellido()%></td>
                             <td class="text-center"><%= clie.getCorreo()%></td>
                             <td>
-                                <a class="btn btn-warning" href="controladorcliente?accion=Editar&id=<%= clie.getIdcliente() %>">Editar</a>
-                                <a class="btn btn-danger" href="controladorcliente?accion=Eliminar&id=<%= clie.getIdcliente() %>">Eliminar</a>
+                                <a class="btn btn-warning" href="controladorcliente?accion=Editar&id=<%=   clie.getIdcliente() %>">Editar</a>
+                                <a class="btn btn-danger" href="controladorcliente?accion=Eliminar&id=<%=  clie.getIdcliente() %>">Eliminar</a>
                             </td>
                         </tr>
                         <%}%>

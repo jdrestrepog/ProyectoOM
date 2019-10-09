@@ -86,7 +86,7 @@ public class Validacion extends HttpServlet {
                     acceso = "menu.jsp";
                 }
                 else if(Cliente.equals(con.Autenticacion2(user, pass))){
-                    acceso = "carrusel.jsp";
+                    acceso = "shop.jsp";
                 }
                 else{
                     acceso = "index.jsp";

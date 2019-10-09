@@ -58,6 +58,10 @@ public class producto {
         this.oferta = oferta;
     }
 
+    public producto() {
+     
+    }
+
     public String getIdproducto() {
         return idproducto;
     }

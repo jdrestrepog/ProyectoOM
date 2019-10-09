@@ -1,0 +1,149 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package LoginMVC.Servlet;
+
+import LoginMVC.modelo.Carrito;
+import LoginMVC.modelo.Consultas;
+import LoginMVC.modelo.producto;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author juan
+ */
+public class Controlador extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    Consultas con = new Consultas();
+    List<producto> p = new ArrayList<>();
+
+    List<Carrito> listacarrito = new ArrayList<>();
+    int item;
+    float totalpagar = 0;
+    int cantidad = 1;
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String accion = request.getParameter("accion");
+
+        p = con.listarproducto();
+        String idproducto;
+        producto   prod = new producto();
+        Carrito car = new Carrito();
+        switch (accion) {
+            case "Comprar":
+                totalpagar = 0;
+                idproducto = request.getParameter("id");
+                prod = con.listprod(idproducto);
+                item = item = 1;
+                car.setItem(item);
+                car.setIdproducto(prod.getIdproducto());
+                car.setNombre(prod.getNombre());
+                car.setPreciocompra(prod.getPreciocomp());
+                car.setCantidad(cantidad);
+                car.setSubtotal(cantidad * prod.getPreciocomp());
+                listacarrito.add(car);
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    totalpagar = totalpagar + listacarrito.get(i).getSubtotal();
+                }
+                request.setAttribute("carrito", listacarrito);
+                request.setAttribute("contador", listacarrito.size());
+                request.getRequestDispatcher("carrito.jsp").forward(request, response);
+                
+                break;
+            case "AgregarCarrito":
+                idproducto = request.getParameter("id");
+                prod = new producto();
+
+                prod = con.listprod(idproducto);
+                item = item = 1;
+
+                car.setItem(item);
+                car.setIdproducto(prod.getIdproducto());
+                car.setNombre(prod.getNombre());
+                car.setPreciocompra(prod.getPreciocomp());
+                car.setCantidad(cantidad);
+                car.setSubtotal(cantidad * prod.getPreciocomp());
+                listacarrito.add(car);
+
+                request.setAttribute("contador", listacarrito.size());
+                request.getRequestDispatcher("Controlador?accion=home").forward(request, response);
+                break;
+            case "Carrito":
+                totalpagar = 0;
+                request.setAttribute("carrito", listacarrito);
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    totalpagar = totalpagar + listacarrito.get(i).getSubtotal();
+                }
+                request.setAttribute("totalpagar", totalpagar);
+
+                request.getRequestDispatcher("carrito.jsp").forward(request, response);
+
+                break;
+
+            default:
+                request.setAttribute("productos", p);
+                request.getRequestDispatcher("shop.jsp").forward(request, response);
+
+        }
+
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

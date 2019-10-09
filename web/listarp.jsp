@@ -26,50 +26,52 @@
             <a class="btn btn-success" href="controladorcliente?accion=addp">Agregar Proveedor</a>
             <br>
             <br>
-            <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="text-center">ID Proveedor</th>
-                            <th class="text-center">Nombre</th>
-                            <th class="text-center">Dirección</th>
-                            <th class="text-center">Ciudad</th>
-                            <th class="text-center">Código Postal</th>
-                            <th class="text-center">Provincia</th>
-                            <th class="text-center">País</th>
-                            <th class="text-center">Número de teléfono</th>
-                            <th class="text-center">Número de Fax</th>
-                            <th class="text-center">Correo</th>
-                            <th class="text-center">Acciones   </th>
-                        </tr>
-                    </thead>
-                    <%  
-                        Consultas c = new Consultas();
-                        List<proveedor>list = c.listarproveedor();
-                        Iterator<proveedor>iter = list.iterator();
-                        proveedor p=null;
-                        while(iter.hasNext()){
-                            p = iter.next();
-                    %>
-                    <tbody>
-                        <tr>
-                            <td class="text-center"><%= p.getIdproveedor() %></td>
-                            <td class="text-center"><%= p.getNombre()      %></td>
-                            <td class="text-center"><%= p.getDireccion()   %></td>
-                            <td class="text-center"><%= p.getCiudad()      %></td>
-                            <td class="text-center"><%= p.getCodpostal()   %></td>
-                            <td class="text-center"><%= p.getProvincia()%></td>
-                            <td class="text-center"><%= p.getPais()%></td>
-                            <td class="text-center"><%= p.getNumtel()%></td>
-                            <td class="text-center"><%= p.getNumfax()%></td>
-                            <td class="text-center"><%= p.getCorreo()%></td>
-                            <td>
-                                <a class="btn btn-warning" href="controladorcliente?accion=Editarp&idp=<%=  p.getIdproveedor() %>">Editar</a>
-                                <a class="btn btn-danger"  href="controladorcliente?accion=Eliminarp&idp=<%= p.getIdproveedor() %>">Eliminar</a>
-                            </td>
-                        </tr>
-                        <%}%>
-                    </tbody>
-                </table>
+            <table class="table table-bordered" style="overflow: auto">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID Proveedor</th>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Dirección</th>
+                        <th class="text-center">Ciudad</th>
+                        <th class="text-center">Código Postal</th>
+                        <th class="text-center">Provincia</th>
+                        <th class="text-center">País</th>
+                        <th class="text-center">Número de teléfono</th>
+                        <th class="text-center">Número de Fax</th>
+                        <th class="text-center">Correo</th>
+                        <th  class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <%
+                    Consultas c = new Consultas();
+                    List<proveedor> list = c.listarproveedor();
+                    Iterator<proveedor> iter = list.iterator();
+                    proveedor p = null;
+                    while (iter.hasNext()) {
+                        p = iter.next();
+                %>
+                <tbody>
+                    <tr>
+                        <td class="text-center"><%= p.getIdproveedor()%></td>
+                        <td class="text-center"><%= p.getNombre()%></td>
+                        <td class="text-center"><%= p.getDireccion()%></td>
+                        <td class="text-center"><%= p.getCiudad()%></td>
+                        <td class="text-center"><%= p.getCodpostal()%></td>
+                        <td class="text-center"><%= p.getProvincia()%></td>
+                        <td class="text-center"><%= p.getPais()%></td>
+                        <td class="text-center"><%= p.getNumtel()%></td>
+                        <td class="text-center"><%= p.getNumfax()%></td>
+                        <td class="text-center"><%= p.getCorreo()%></td>
+                        <td>
+                            <div class="row" style="width: '800px'" >
+                                <div class="col-md-6"><a class="btn btn-warning " href="controladorcliente?accion=Editarp&idp=<%=   p.getIdproveedor()%>">Editar</a></div>
+                                <div class="col-md-6"><a class="btn btn-danger  col-md-6"  href="controladorcliente?accion=Eliminarp&idp=<%= p.getIdproveedor()%>">Eliminar</a></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <%}%>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

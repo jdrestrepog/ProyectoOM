@@ -12,6 +12,14 @@
         <servlet-name>controladorusuario</servlet-name>
         <servlet-class>LoginMVC.Servlet.controladorusuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Controlador</servlet-name>
+        <servlet-class>LoginMVC.Servlet.Controlador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorIMG</servlet-name>
+        <servlet-class>LoginMVC.Servlet.ControladorIMG</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Validacion</servlet-name>
         <url-pattern>/Autenticacion</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>controladorusuario</servlet-name>
         <url-pattern>/controladorusuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador</servlet-name>
+        <url-pattern>/Controlador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorIMG</servlet-name>
+        <url-pattern>/ControladorIMG</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
