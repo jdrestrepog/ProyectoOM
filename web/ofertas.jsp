@@ -1,11 +1,11 @@
 <%-- 
-    Document   : carrusel
-    Created on : 6/10/2019, 04:08:56 PM
+    Document   : ofertas
+    Created on : 14/10/2019, 11:47:56 AM
     Author     : juan
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,8 +25,8 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="Controlador?accion=home">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Controlador?accion=ofertas">Ofertas del dia<span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?accion=ofertas">Ofertas del dia</a>
                     </li>
 
                     <li class="nav-item">

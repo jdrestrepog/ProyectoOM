@@ -70,15 +70,15 @@
                     </thead>
                     <tbody>
                         <c:forEach var="car" items="${carrito}">
-                            <tr>
+                            <tr  class="text-center">
                                 <td>${car.getItem()}</td>
                                 <td>${car.getNombre()}</td>
                                 <td>${car.getPreciocompra()}</td>
                                 <td>${car.getCantidad()}</td>
                                 <td>${car.getSubtotal() }</td>
                                 <td>
-                                    <a href="">Eliminar</a>
-                                    <a href="">Editar</a>
+                                    <%--<input href="Controlador?accion=Delete" type="hidden" id="idp" value="${car.getIdproducto()}">--%>
+                                    <a id="btnDelete" href="Controlador?accion=Delete&idp=${car.getIdproducto()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -99,8 +99,8 @@
                         <input type="text" value="$. ${totalpagar}0" readonly="" class="form-control">
                     </div>
                     <div class="card-footer">
-                        <a href="" class="btn btn-info btn-block">Realizar Pago</a>
-                        <a href="" class="btn btn-danger btn-block">Generar Compra</a>
+                        <a href="Controlador?accion=pago"         class="btn btn-info btn-block">Realizar Pago</a>
+                        <a href="Controlador?accion=compra" class="btn btn-danger btn-block">Generar Compra</a>
                     </div>
                 </div>
             </div>
@@ -109,5 +109,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/funciones.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </body>
 

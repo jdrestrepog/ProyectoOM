@@ -349,6 +349,48 @@ public class Consultas extends Conexion {
         return list;
     }
 
+
+    public List listarproductooferta() {
+
+        ArrayList<producto> list = new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = "SELECT * FROM VentaLociones.producto where oferta = 'si';";
+            rs = st.executeQuery(consulta);
+
+            while (rs.next()) {
+                producto prod = new producto();
+
+                prod.setIdproducto(rs.getString("idproducto"));
+                prod.setMarca(rs.getString("marca"));
+                prod.setNombre(rs.getString("nombre"));
+                prod.setReferencia(rs.getString("referencia"));
+                prod.setDescripcion(rs.getString("descripcion"));
+                prod.setAniolanzamiento(rs.getString("aniolanzamiento"));
+                prod.setFamiliaolf(rs.getString("familiaolf"));
+                prod.setNotasalida(rs.getString("notasalida"));
+                prod.setNotacorazon(rs.getString("notacorazon"));
+                prod.setNotafondo(rs.getString("notafondo"));
+                prod.setCategoria(rs.getString("categoria"));
+                prod.setTipo(rs.getString("tipo"));
+                prod.setMililitros(rs.getString("mililitros"));
+                prod.setOnzas(rs.getString("onzas"));
+                prod.setUso(rs.getString("uso"));
+                prod.setPreciocomp(rs.getFloat("preciocomp"));
+                prod.setPrecioventa(rs.getFloat("precioventa"));
+                prod.setDescuento(rs.getFloat("descuento"));
+                prod.setPreciodesc(rs.getFloat("preciodesc"));
+                prod.setOferta(rs.getString("oferta"));
+
+                list.add(prod);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }    
+    
     public boolean eliminarprod(String idproducto) {
         PreparedStatement ps;
         String consulta = "DELETE FROM `VentaLociones`.`producto` where idproducto=" + idproducto;

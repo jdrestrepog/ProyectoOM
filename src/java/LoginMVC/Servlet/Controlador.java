@@ -33,7 +33,8 @@ public class Controlador extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     Consultas con = new Consultas();
-    List<producto> p = new ArrayList<>();
+    List<producto> p       = new ArrayList<>();
+    List<producto> poferta = new ArrayList<>();
 
     List<Carrito> listacarrito = new ArrayList<>();
     int item;
@@ -44,9 +45,10 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
 
-        p = con.listarproducto();
+        p       = con.listarproducto();
+        poferta = con.listarproductooferta();
         String idproducto;
-        producto   prod = new producto();
+        producto prod = new producto();
         Carrito car = new Carrito();
         switch (accion) {
             case "Comprar":
@@ -64,10 +66,11 @@ public class Controlador extends HttpServlet {
                 for (int i = 0; i < listacarrito.size(); i++) {
                     totalpagar = totalpagar + listacarrito.get(i).getSubtotal();
                 }
+                request.setAttribute("totalpagar", totalpagar);
                 request.setAttribute("carrito", listacarrito);
                 request.setAttribute("contador", listacarrito.size());
                 request.getRequestDispatcher("carrito.jsp").forward(request, response);
-                
+
                 break;
             case "AgregarCarrito":
                 idproducto = request.getParameter("id");
@@ -86,6 +89,25 @@ public class Controlador extends HttpServlet {
 
                 request.setAttribute("contador", listacarrito.size());
                 request.getRequestDispatcher("Controlador?accion=home").forward(request, response);
+
+                break;
+            case "Delete":
+                String idp = request.getParameter("idp");
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    if (idp.equalsIgnoreCase(listacarrito.get(i).getIdproducto())) {
+                        listacarrito.remove(i);
+                    }
+                }
+                totalpagar = 0;
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    totalpagar = totalpagar + listacarrito.get(i).getSubtotal();
+                }
+
+                request.setAttribute("totalpagar", totalpagar);
+                request.setAttribute("carrito", listacarrito);
+                request.setAttribute("contador", listacarrito.size());
+                request.setAttribute("carrito", listacarrito);
+                request.getRequestDispatcher("carrito.jsp").forward(request, response);
                 break;
             case "Carrito":
                 totalpagar = 0;
@@ -98,7 +120,13 @@ public class Controlador extends HttpServlet {
                 request.getRequestDispatcher("carrito.jsp").forward(request, response);
 
                 break;
-
+            case "pago":
+                request.getRequestDispatcher("pagos.jsp").forward(request, response);
+                break;
+            case "ofertas":
+                request.setAttribute("productos", poferta);
+                request.getRequestDispatcher("ofertas.jsp").forward(request, response);
+                break;
             default:
                 request.setAttribute("productos", p);
                 request.getRequestDispatcher("shop.jsp").forward(request, response);

@@ -18,76 +18,73 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Tinda lociones</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Controlador?accion=home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ofertas del dia</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?accion=Carrito"><i class="fas fa-cart-plus"></i>(<label style="color: darkorange">${contador}</label>)Carrito</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+        </nav>
         <div class="container">
-            <h1>Proveedores</h1>
-            <a class="btn btn-success" href="controladorcliente?accion=addprod">Agregar Producto</a>
+            <h1>Productos</h1>
+            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=addprod">Agregar Producto</a>
             <br>
             <br>
-            <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="text-center">ID Producto</th>
-                            <th class="text-center">Marca</th>
-                            <th class="text-center">Nombre</th>
-                            <th class="text-center">Referencia</th>
-                            <th class="text-center">Descripción</th>
-                            <th class="text-center">Año Lanzamiento</th>
-                            <th class="text-center">Familia Olfativa</th>
-                            <th class="text-center">Nota Salidad</th>
-                            <th class="text-center">Nota Corazón</th>
-                            <th class="text-center">Nota Fondo</th>
-                            <th class="text-center">Categoría</th>
-                            <th class="text-center">Tipo</th>
-                            <th class="text-center">Mililitros</th>
-                            <th class="text-center">Onzas</th>
-                            <th class="text-center">Uso</th>
-                            <th class="text-center">Precio Compra</th>
-                            <th class="text-center">Precio Venta</th>
-                            <th class="text-center">Descuento</th>
-                            <th class="text-center">Precio Con Descuento</th>
-                            <th class="text-center">Oferta</th>
-                            <th class="text-center">Acciones   </th>
-                        </tr>
-                    </thead>
-                    <%  
-                        Consultas c = new Consultas();
-                        List<producto>list = c.listarproducto();
-                        Iterator<producto>iter = list.iterator();
-                        producto p=null;
-                        while(iter.hasNext()){
-                            p = iter.next();
-                    %>
-                    <tbody>
-                        <tr>
-                            <td class="text-center"><%= p.getIdproducto()%></td>
-                            <td class="text-center"><%= p.getMarca()%></td>
-                            <td class="text-center"><%= p.getNombre()%></td>
-                            <td class="text-center"><%= p.getReferencia()%></td>
-                            <td class="text-center"><%= p.getDescripcion()%></td>
-                            <td class="text-center"><%= p.getAniolanzamiento()%></td>
-                            <td class="text-center"><%= p.getFamiliaolf()%></td>
-                            <td class="text-center"><%= p.getNotasalida()%></td>
-                            <td class="text-center"><%= p.getNotacorazon()%></td>
-                            <td class="text-center"><%= p.getNotafondo()%></td>
-                            <td class="text-center"><%= p.getCategoria()%></td>
-                            <td class="text-center"><%= p.getTipo()%></td>
-                            <td class="text-center"><%= p.getMililitros() %></td>
-                            <td class="text-center"><%= p.getOnzas()%></td>
-                            <td class="text-center"><%= p.getUso()%></td>
-                            <td class="text-center"><%= p.getPreciocomp()%></td>
-                            <td class="text-center"><%= p.getPrecioventa()%></td>
-                            <td class="text-center"><%= p.getDescuento()%></td>
-                            <td class="text-center"><%= p.getPreciodesc()%></td>
-                            <td class="text-center"><%= p.getOferta()%></td>
-            
-                            <td>
-                                <a class="btn btn-warning" href="controladorcliente?accion=Editarprod&idprod=<%=  p.getIdproducto()%>">Editar</a>
-                                <a class="btn btn-danger"  href="controladorcliente?accion=Eliminarprod&idprod=<%= p.getIdproducto()%>">Eliminar</a>
-                            </td>
-                        </tr>
-                        <%}%>
-                    </tbody>
-                </table>
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr class="text-center d-flex">
+                        <th class="col-sm-1">ID Producto</th>
+                        <th class="col-sm-2">Marca</th>
+                        <th class="col-sm-2">Nombre</th>
+                        <th class="col-sm-2">Descripción</th>
+                        <th class="col-sm-2">Precio Venta</th>
+                        <th class="col-sm-2">Precio Con Descuento</th>
+                        <th class="col-sm-1">Oferta</th>
+                        <th class="col-sm-3">Acciones   </th>
+                    </tr>
+                </thead>
+                <%
+                    Consultas c = new Consultas();
+                    List<producto> list = c.listarproducto();
+                    Iterator<producto> iter = list.iterator();
+                    producto p = null;
+                    while (iter.hasNext()) {
+                        p = iter.next();
+                %>
+                <tbody>
+                    <tr class="text-center d-flex">
+                        <td class="col-sm-1"><%= p.getIdproducto()%></td>
+                        <td class="col-sm-2"><%= p.getMarca()%></td>
+                        <td class="col-sm-2"><%= p.getNombre()%></td>
+                        <td class="col-sm-2"><%= p.getDescripcion()%></td>
+                        <td class="col-sm-2"><%= p.getPrecioventa()%></td>
+                        <td class="col-sm-2"><%= p.getPreciodesc()%></td>
+                        <td class="col-sm-1"><%= p.getOferta()%></td>
+                        <td class="col-sm-3">
+                            <a class="btn btn-warning btn-dark bg-dark" href="controladorcliente?accion=Editarprod&idprod=<%=  p.getIdproducto()%>">Editar</a>
+                            <a class="btn btn-danger"  href="controladorcliente?accion=Eliminarprod&idprod=<%= p.getIdproducto()%>">Eliminar</a>
+                        </td>
+                    </tr>
+                    <%}%>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

@@ -14,19 +14,43 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Tinda lociones</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Controlador?accion=home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ofertas del dia</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?accion=Carrito"><i class="fas fa-cart-plus"></i>(<label style="color: darkorange">${contador}</label>)Carrito</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+        </nav>
         <br>
         <br>
         <div class="container">
-            <a class="btn btn-success btn-lg" href="controladorcliente?accion=listar">Listar Cliente</a>
+            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listar">Listar Cliente</a>
             <br>
             <br>
-            <a class="btn btn-success btn-lg" href="controladorcliente?accion=listarp">Listar Proveedor</a>
+            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarp">Listar Proveedor</a>
             <br>
             <br>
-            <a class="btn btn-success btn-lg" href="controladorcliente?accion=listarprod">Listar Producto</a>
+            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarprod">Listar Producto</a>
             <br>
             <br>
-            <a class="btn btn-success btn-lg" href="controladorcliente?accion=listarinv">Generar Inventario</a>
+            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarinv">Generar Inventario</a>
         </div>
     </body>
 </html>

@@ -21,25 +21,45 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Tinda lociones</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Controlador?accion=home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ofertas del dia</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?accion=Carrito"><i class="fas fa-cart-plus"></i>(<label style="color: darkorange">${contador}</label>)Carrito</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+        </nav>
         <div class="container">
             <h1>Proveedores</h1>
-            <a class="btn btn-success" href="controladorcliente?accion=addp">Agregar Proveedor</a>
+            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=addp">Agregar Proveedor</a>
             <br>
             <br>
-            <table class="table table-bordered" style="overflow: auto">
-                <thead>
-                    <tr>
-                        <th class="text-center">ID Proveedor</th>
-                        <th class="text-center">Nombre</th>
-                        <th class="text-center">Dirección</th>
-                        <th class="text-center">Ciudad</th>
-                        <th class="text-center">Código Postal</th>
-                        <th class="text-center">Provincia</th>
-                        <th class="text-center">País</th>
-                        <th class="text-center">Número de teléfono</th>
-                        <th class="text-center">Número de Fax</th>
-                        <th class="text-center">Correo</th>
-                        <th  class="text-center">Acciones</th>
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr class="text-center d-flex">
+                        <th class="col-sm-1">ID Proveedor</th>
+                        <th class="col-sm-2">Nombre</th>
+                        <th class="col-sm-2">Dirección</th>
+                        <th class="col-sm-1">Ciudad</th>
+                        <th class="col-sm-2">Número de teléfono</th>
+                        <th class="col-sm-2">Correo</th>
+                        <th class="col-sm-3">Acciones</th>
                     </tr>
                 </thead>
                 <%
@@ -51,22 +71,18 @@
                         p = iter.next();
                 %>
                 <tbody>
-                    <tr>
-                        <td class="text-center"><%= p.getIdproveedor()%></td>
-                        <td class="text-center"><%= p.getNombre()%></td>
-                        <td class="text-center"><%= p.getDireccion()%></td>
-                        <td class="text-center"><%= p.getCiudad()%></td>
-                        <td class="text-center"><%= p.getCodpostal()%></td>
-                        <td class="text-center"><%= p.getProvincia()%></td>
-                        <td class="text-center"><%= p.getPais()%></td>
-                        <td class="text-center"><%= p.getNumtel()%></td>
-                        <td class="text-center"><%= p.getNumfax()%></td>
-                        <td class="text-center"><%= p.getCorreo()%></td>
-                        <td>
-                            <div class="row" style="width: '800px'" >
-                                <div class="col-md-6"><a class="btn btn-warning " href="controladorcliente?accion=Editarp&idp=<%=   p.getIdproveedor()%>">Editar</a></div>
-                                <div class="col-md-6"><a class="btn btn-danger  col-md-6"  href="controladorcliente?accion=Eliminarp&idp=<%= p.getIdproveedor()%>">Eliminar</a></div>
-                            </div>
+                    <tr class="text-center d-flex">
+                        <td class="col-sm-1"><%= p.getIdproveedor()%></td>
+                        <td class="col-sm-2"><%= p.getNombre()%></td>
+                        <td class="col-sm-2"><%= p.getDireccion()%></td>
+                        <td class="col-sm-1"><%= p.getCiudad()%></td>
+                        <td class="col-sm-2"><%= p.getNumtel()%></td>
+                        <td class="col-sm-2"><%= p.getCorreo()%></td>
+                        <td class="col-sm-3">
+                            
+                                <a class="btn btn-success btn-dark bg-dark " href="controladorcliente?accion=Editarp&idp=<%=   p.getIdproveedor()%>">Editar</a>
+                                <a class="btn btn-danger  btn-warning"  href="controladorcliente?accion=Eliminarp&idp=<%= p.getIdproveedor()%>">Eliminar</a>
+                           
                         </td>
                     </tr>
                     <%}%>
