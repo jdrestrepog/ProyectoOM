@@ -109,7 +109,7 @@ public class Consultas extends Conexion {
                     + c.getIdcliente() + "','" + c.getTipodoc() + "','" + c.getNumerodoc() + "','" + c.getPrimernombre() + "','"
                     + c.getSegundonombre() + "','" + c.getPrimerapellido() + "','" + c.getSegundoapellido() + "','" + c.getCorreo() + "','" + c.getTelefono() + "','" + c.getNomempresa() + "','"
                     + c.getDireccion() + "','" + c.getCodpostal() + "','" + c.getCiudad() + "','" + c.getDepartamento() + "','"
-                    + c.getPais() + "','" + c.getPass() + "','" + c.getTipocliente() + "')";
+                    + c.getPais() + "','" + c.getPass() + "','" + c.getTipocliente() + "');";
 
             ps = conn.prepareStatement(consulta);
             ps.executeUpdate();
@@ -349,7 +349,6 @@ public class Consultas extends Conexion {
         return list;
     }
 
-
     public List listarproductooferta() {
 
         ArrayList<producto> list = new ArrayList<>();
@@ -389,8 +388,8 @@ public class Consultas extends Conexion {
             Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
-    }    
-    
+    }
+
     public boolean eliminarprod(String idproducto) {
         PreparedStatement ps;
         String consulta = "DELETE FROM `VentaLociones`.`producto` where idproducto=" + idproducto;
@@ -478,7 +477,9 @@ public class Consultas extends Conexion {
 
                 p.setIdproducto(rs.getString("idproducto"));
                 p.setIdproveedor(rs.getString("idproveedor"));
-                p.setCantidad(rs.getString("cantidad"));
+                int cantidad = Integer.parseInt(rs.getString("cantidad"));
+                p.setCantidad(cantidad);
+                //p.setCantidad(Integer.parseInt(rs.getString("cantidad")));
 
                 list.add(p);
             }
@@ -491,16 +492,15 @@ public class Consultas extends Conexion {
     public void listarimg(String idproducto, HttpServletResponse response) {
 
         producto p = new producto();
-        InputStream inputStream= null;
+        InputStream inputStream = null;
         OutputStream outputStream = null;
-        
+
         BufferedInputStream bufferedInputStream = null;
         BufferedOutputStream bufferedOutputStream = null;
-        
-        
+
         try {
             outputStream = response.getOutputStream();
-            
+
             Statement st = conn.createStatement();
             ResultSet rs = null;
             String consulta = "SELECT * FROM VentaLociones.producto where idproducto ='" + idproducto + "'";
@@ -510,14 +510,80 @@ public class Consultas extends Conexion {
             }
             bufferedInputStream = new BufferedInputStream(inputStream);
             bufferedOutputStream = new BufferedOutputStream(outputStream);
-            int i=0;
-            
-            while ((i = bufferedInputStream.read()) != -1) {                
+            int i = 0;
+
+            while ((i = bufferedInputStream.read()) != -1) {
                 bufferedOutputStream.write(i);
             }
-            
-            
+
         } catch (Exception e) {
         }
+    }
+
+    public boolean agregarinv(inventario inv) {
+        PreparedStatement ps;
+        try {
+            String consulta = "INSERT INTO VentaLociones.productoprov (idproducto, idproveedor, cantidad"
+                    + " ) VALUES ('"
+                    + inv.getIdproducto() + "','" + inv.getIdproveedor() + "','" + inv.getCantidad() + "');";
+
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            ex.toString();
+            return false;
+        }
+        return true;
+    }
+
+    public inventario listinv(String idproducto) {
+        inventario inv = new inventario();
+
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = "SELECT * FROM VentaLociones.productoprov where idproducto ='" + idproducto + "'";
+            rs = st.executeQuery(consulta);
+            while (rs.next()) {
+
+                inv.setIdproducto(rs.getString("idproducto"));
+                inv.setIdproveedor(rs.getString("idproveedor"));
+                inv.setCantidad(Integer.parseInt(rs.getString("cantidad")));
+
+            }
+        } catch (Exception e) {
+        }
+        return inv;
+    }
+
+    public boolean editinv(inventario inv) {
+        PreparedStatement ps;
+
+        String cantidad = Integer.toString(inv.getCantidad());
+
+        String consulta = "UPDATE `VentaLociones`.`productoprov` SET `cantidad` = '"
+                + cantidad + "' WHERE (`idproducto` = '"
+                + inv.getIdproducto() + "') and (`idproveedor` = '" + inv.getIdproveedor() + "');";
+
+        try {
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    public boolean eliminarinv(String idproducto, String idproveedor) {
+        PreparedStatement ps;
+        String consulta = "DELETE FROM `VentaLociones`.`productoprov` WHERE (`idproducto` = '" + idproducto + "') and (`idproveedor` = '" + idproveedor + "');";
+
+        try {
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
     }
 }

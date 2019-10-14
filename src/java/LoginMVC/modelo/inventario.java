@@ -12,12 +12,12 @@ package LoginMVC.modelo;
 public class inventario {
     String idproducto;
     String idproveedor;
-    String cantidad;
+    int cantidad;
 
     public inventario() {
     }
 
-    public inventario(String idproducto, String idproveedor, String cantidad) {
+    public inventario(String idproducto, String idproveedor, int cantidad) {
         this.idproducto = idproducto;
         this.idproveedor = idproveedor;
         this.cantidad = cantidad;
@@ -31,7 +31,7 @@ public class inventario {
         return idproveedor;
     }
 
-    public String getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
@@ -43,7 +43,7 @@ public class inventario {
         this.idproveedor = idproveedor;
     }
 
-    public void setCantidad(String cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
     

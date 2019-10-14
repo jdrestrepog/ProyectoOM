@@ -10,12 +10,12 @@ package LoginMVC.modelo;
  * @author juan
  */
 public class Carrito {
-    int item;
+    int    item;
     String idproducto;
     String nombre;
-    float preciocompra;
-    int cantidad;
-    float subtotal;
+    float  preciocompra;
+    int    cantidad;
+    float  subtotal;
 
     public Carrito() {
     }

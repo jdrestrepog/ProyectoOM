@@ -25,11 +25,11 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="Controlador?accion=home">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ofertas del dia</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="Controlador?accion=ofertas">Ofertas del dia</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="Controlador?accion=home">Seguir Comprando</a>
                 </li>
             </ul>
@@ -77,7 +77,7 @@
                                 <td>${car.getCantidad()}</td>
                                 <td>${car.getSubtotal() }</td>
                                 <td>
-                                    <%--<input href="Controlador?accion=Delete" type="hidden" id="idp" value="${car.getIdproducto()}">--%>
+
                                     <a id="btnDelete" href="Controlador?accion=Delete&idp=${car.getIdproducto()}">Eliminar</a>
                                 </td>
                             </tr>

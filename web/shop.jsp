@@ -29,7 +29,7 @@
                         <a class="nav-link" href="Controlador?accion=ofertas">Ofertas del dia<span class="sr-only">(current)</span></a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="Controlador?accion=Carrito"><i class="fas fa-cart-plus"></i>(<label style="color: darkorange">${contador}</label>)Carrito</a>
                     </li>
                 </ul>

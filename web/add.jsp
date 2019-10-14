@@ -21,7 +21,7 @@
                     ID Cliente: <br>
                     <input class="form-control" type="text"   name="txtidcliente"><br>
                     Tipo Documento: <br>
-                    <input class="form-control" type="text"   name="txttipodoc"><br>
+                    <input class="form-control" placeholder="1-Cedula 2-Nit" type="text"   name="txttipodoc"><br>
                     Numero Documento: <br>
                     <input class="form-control" type="text"   name="txtnumerodoc"><br>
                     Primer Nombre: <br>
@@ -52,7 +52,7 @@
                     <input type="text"   name="txtpass"> <br>
                     <br>
                     Tipo Cliente: <br>
-                    <input type="text"   name="txttipocliente"> <br>
+                    <input type="text" placeholder="1-Administrador 2-Cliente"  name="txttipocliente"> <br>
                     <br>
                     <input class="btn btn-primary" type="submit" name="accion" value="agregar"><br>
                 </form>  

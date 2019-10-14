@@ -45,12 +45,16 @@
         <div class="container">
             <h1>Inventario</h1>
             <br>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th class="text-center">ID Producto</th>
-                        <th class="text-center">ID Proveedor</th>
-                        <th class="text-center">Cantidad disponible</th>
+            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=addinv">Agregar Producto</a>
+            <br>
+            <br>
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr class="text-center d-flex">
+                        <th class="col-sm-1">ID Producto</th>
+                        <th class="col-sm-1">ID Proveedor</th>
+                        <th class="col-sm-1">Cantidad disponible</th>
+                        <th class="col-sm-2">Acciones</th>
                     </tr>
                 </thead>
                 <%
@@ -62,10 +66,15 @@
                         p = iter.next();
                 %>
                 <tbody>
-                    <tr>
-                        <td class="text-center"><%= p.getIdproducto()%></td>
-                        <td class="text-center"><%= p.getIdproveedor()%></td>
-                        <td class="text-center"><%= p.getCantidad()%></td>  
+                    <tr class="text-center d-flex">
+                        <td class="col-sm-1"><%= p.getIdproducto()%></td>
+                        <td class="col-sm-1"><%= p.getIdproveedor()%></td>
+                        <td class="col-sm-1"><%= p.getCantidad()%></td>  
+                        <td class="col-sm-2">
+                            <a class="btn btn-warning btn-dark bg-dark" href="controladorcliente?accion=Editarinv&idinv=<%=p.getIdproducto()%>">Editar</a>
+                            <a class="btn btn-danger" href="controladorcliente?accion=Eliminarinv&idinv=<%=p.getIdproducto()%>">Eliminar</a>
+                            <input name="idprov" name="idprov" type="hidden" value="${p.getIdproveedor()}">
+                        </td>
                     </tr>
                     <%}%>
                 </tbody>

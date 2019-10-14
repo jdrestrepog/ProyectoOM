@@ -7,6 +7,7 @@ package LoginMVC.Servlet;
 
 import LoginMVC.modelo.Carrito;
 import LoginMVC.modelo.Consultas;
+import LoginMVC.modelo.inventario;
 import LoginMVC.modelo.producto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,7 +34,7 @@ public class Controlador extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     Consultas con = new Consultas();
-    List<producto> p       = new ArrayList<>();
+    List<producto> p = new ArrayList<>();
     List<producto> poferta = new ArrayList<>();
 
     List<Carrito> listacarrito = new ArrayList<>();
@@ -45,7 +46,7 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
 
-        p       = con.listarproducto();
+        p = con.listarproducto();
         poferta = con.listarproductooferta();
         String idproducto;
         producto prod = new producto();
@@ -73,19 +74,47 @@ public class Controlador extends HttpServlet {
 
                 break;
             case "AgregarCarrito":
+                int pos = 0;
+                cantidad = 1;
                 idproducto = request.getParameter("id");
                 prod = new producto();
-
                 prod = con.listprod(idproducto);
-                item = item = 1;
 
-                car.setItem(item);
-                car.setIdproducto(prod.getIdproducto());
-                car.setNombre(prod.getNombre());
-                car.setPreciocompra(prod.getPreciocomp());
-                car.setCantidad(cantidad);
-                car.setSubtotal(cantidad * prod.getPreciocomp());
-                listacarrito.add(car);
+                if (listacarrito.size() > 0) {
+                    for (int i = 0; i < listacarrito.size(); i++) {
+                        if (idproducto.equalsIgnoreCase(listacarrito.get(i).getIdproducto())) {
+                            pos = i;
+                        }
+
+                    }
+                    if (idproducto.equalsIgnoreCase(listacarrito.get(pos).getIdproducto())) {
+                        cantidad = listacarrito.get(pos).getCantidad() + cantidad;
+                        totalpagar = listacarrito.get(pos).getPreciocompra() * cantidad;
+                        listacarrito.get(pos).setCantidad(cantidad);
+                        listacarrito.get(pos).setSubtotal(totalpagar);
+
+                    } else {
+                        item = item = 1;
+                        car.setItem(item);
+                        car.setIdproducto(prod.getIdproducto());
+                        car.setNombre(prod.getNombre());
+                        car.setPreciocompra(prod.getPreciocomp());
+                        car.setCantidad(cantidad);
+                        car.setSubtotal(cantidad * prod.getPreciocomp());
+                        listacarrito.add(car);
+                    }
+
+                } else {
+                    item = item = 1;
+                    car.setItem(item);
+                    car.setIdproducto(prod.getIdproducto());
+                    car.setNombre(prod.getNombre());
+                    car.setPreciocompra(prod.getPreciocomp());
+                    car.setCantidad(cantidad);
+                    car.setSubtotal(cantidad * prod.getPreciocomp());
+                    listacarrito.add(car);
+
+                }
 
                 request.setAttribute("contador", listacarrito.size());
                 request.getRequestDispatcher("Controlador?accion=home").forward(request, response);
@@ -121,6 +150,39 @@ public class Controlador extends HttpServlet {
 
                 break;
             case "pago":
+                
+                inventario inv = new inventario();
+                
+                
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    // Obtenemos la cantidad en inventario por id producto
+                    inv = con.listinv(listacarrito.get(i).getIdproducto());
+                    
+                    
+                    // Modifico el auxiliar cantidad a la cantidad de la BD
+                    int cantidad = inv.getCantidad();
+                    
+                    //Hago cantida = cantidad menos la cantidad que hay en carrito
+                    cantidad = cantidad - listacarrito.get(i).getCantidad();
+                    
+                    //Actualizo la BD con la nueva cantidad
+                    inv.setCantidad(cantidad);
+                    
+                    con.editinv(inv);
+                    
+                } 
+                //Primero eliminamos todos los elementos de la lista
+                listacarrito.clear();
+                //Recorremos la lista para obtener el ID producto y la cantidad
+                for (int i = 0; i < listacarrito.size(); i++) {
+                    
+                }
+
+                request.getRequestDispatcher("pagos.jsp").forward(request, response);
+                break;
+            case "compra":
+                //Primero eliminamos todos los elementos de la lista
+                listacarrito.clear();
                 request.getRequestDispatcher("pagos.jsp").forward(request, response);
                 break;
             case "ofertas":

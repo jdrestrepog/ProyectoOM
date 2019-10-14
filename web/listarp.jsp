@@ -79,10 +79,8 @@
                         <td class="col-sm-2"><%= p.getNumtel()%></td>
                         <td class="col-sm-2"><%= p.getCorreo()%></td>
                         <td class="col-sm-3">
-                            
-                                <a class="btn btn-success btn-dark bg-dark " href="controladorcliente?accion=Editarp&idp=<%=   p.getIdproveedor()%>">Editar</a>
-                                <a class="btn btn-danger  btn-warning"  href="controladorcliente?accion=Eliminarp&idp=<%= p.getIdproveedor()%>">Eliminar</a>
-                           
+                            <a class="btn btn-success btn-dark bg-dark " href="controladorcliente?accion=Editarp&idp=<%=   p.getIdproveedor()%>">Editar</a>
+                            <a class="btn btn-danger  btn-warning"  href="controladorcliente?accion=Eliminarp&idp=<%= p.getIdproveedor()%>">Eliminar</a>                
                         </td>
                     </tr>
                     <%}%>

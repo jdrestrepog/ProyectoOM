@@ -25,24 +25,24 @@
                 %>
                 <h1>Modificar Persona</h1>
                 <form action="controladorcliente">
-                    IdCliente:<br>
-                    <input class="form-control" type="text" name="txtidcliente" value="<%= c.getIdcliente()%>"><br>
+                    ID Cliente:<br>
+                    <input class="form-control" type="text" name="txtidcliente" value="<%=c.getIdcliente()%>"><br>
                     Tipo Documento: <br>
-                    <input class="form-control" type="text" name="txttipodoc" value="<%= c.getTipodoc()%>"><br>
+                    <input class="form-control" type="text" name="txttipodoc" value="<%=c.getTipodoc()%>"><br>
                     Numero Documento: <br>
-                    <input class="form-control" type="text" name="txtnumerodoc" value="<%= c.getNumerodoc()%>"><br>
+                    <input class="form-control" type="text" name="txtnumerodoc" value="<%=c.getNumerodoc()%>"><br>
                     Primer Nombre: <br>
-                    <input class="form-control" type="text" name="txtprimernombre" value="<%= c.getPrimernombre()%>"><br>
+                    <input class="form-control" type="text" name="txtprimernombre" value="<%=c.getPrimernombre()%>"><br>
                     Segundo Nombre: <br>
-                    <input class="form-control" type="text" name="txtsegundonombre" value="<%= c.getSegundonombre()%>"><br>
+                    <input class="form-control" type="text" name="txtsegundonombre" value="<%=c.getSegundonombre()%>"><br>
                     Primer Apellido <br>
-                    <input class="form-control" type="text" name="txtprimerapellido" value="<%= c.getPrimerapellido()%>"><br>
+                    <input class="form-control" type="text" name="txtprimerapellido" value="<%=c.getPrimerapellido()%>"><br>
                     Correo: <br>
-                    <input class="form-control" type="text" name="txtcorreo" value="<%= c.getCorreo()%>"><br>
+                    <input class="form-control" type="text" name="txtcorreo" value="<%=c.getCorreo()%>"><br>
                     Telefono: <br>
-                    <input class="form-control" type="text" name="txttelefono" value="<%= c.getTelefono()%>"><br>
+                    <input class="form-control" type="text" name="txttelefono" value="<%=c.getTelefono()%>"><br>
 
-                    <input type="hidden" name="txtidcliente" value="<%= c.getIdcliente()%>">
+                    <input type="hidden" name="txtidcliente" value="<%=c.getIdcliente()%>">
                     <input class="btn btn-primary" type="submit" name="accion" value="Actualizar"> 
                     <a href="controladorcliente?accion=listar">Regresar</a>
                 </form>

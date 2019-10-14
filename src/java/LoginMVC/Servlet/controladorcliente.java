@@ -7,6 +7,7 @@ package LoginMVC.Servlet;
 
 import LoginMVC.modelo.Consultas;
 import LoginMVC.modelo.cliente;
+import LoginMVC.modelo.inventario;
 import LoginMVC.modelo.producto;
 import LoginMVC.modelo.proveedor;
 import com.sun.corba.se.spi.protocol.RequestDispatcherDefault;
@@ -25,21 +26,25 @@ import modeloDAO.clienteDAO;
  */
 public class controladorcliente extends HttpServlet {
 
-    String listar = "listar.jsp";
+    String listar    = "listar.jsp";
     String listarinv = "listarinv.jsp";
-    String add = "add.jsp";
-    String edit = "edit.jsp";
+    String add       = "add.jsp";
+    String edit      = "edit.jsp";
+    String editinv   = "editinv.jsp";
 
     String listarp = "listarp.jsp";
-    String addp = "addp.jsp";
-    String editp = "editp.jsp";
+    String addp    = "addp.jsp";
+    String editp   = "editp.jsp";
 
     String listarprod = "listarprod.jsp";
-    String addprod = "addprod.jsp";
-    String editprod = "editprod.jsp";
-    String menu = "menu.jsp";
+    String addprod    = "addprod.jsp";
+    String addproΩd    = "addprod.jsp";
+    String editprod   = "editprod.jsp";
+    String menu       = "menu.jsp";
+   
+    String addinv       = "addinv.jsp";
 
-    cliente c = new cliente();
+    cliente      c = new cliente();
     clienteDAO dao = new clienteDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -59,6 +64,7 @@ public class controladorcliente extends HttpServlet {
         } else if (action.equalsIgnoreCase("add")) {
             acceso = add;
         } else if (action.equalsIgnoreCase("Agregar")) {
+            
             String idcliente = request.getParameter("txtidcliente");
             String tipodoc = request.getParameter("txttipodoc");
             String numerodoc = request.getParameter("txtnumerodoc");
@@ -81,7 +87,9 @@ public class controladorcliente extends HttpServlet {
             c.setTipodoc(tipodoc);
             c.setNumerodoc(numerodoc);
             c.setPrimernombre(primernombre);
+            c.setSegundonombre(segundonombre);
             c.setPrimerapellido(primerapellido);
+            c.setSegundoapellido(segundoapellido);
             c.setCorreo(correo);
             c.setTelefono(telefono);
             c.setNomempresa(nomempresa);
@@ -90,9 +98,12 @@ public class controladorcliente extends HttpServlet {
             c.setCiudad(ciudad);
             c.setDepartamento(departamento);
             c.setPais(pais);
+            c.setTipocliente(tipocliente);
             c.setPass(pass);
-
-            dao.add(c);
+            
+            Consultas con = new Consultas();
+            con.agregarCliente(c);
+            
 
             acceso = listar;
 
@@ -121,7 +132,7 @@ public class controladorcliente extends HttpServlet {
             c.setTipodoc(tipodoc);
             c.setNumerodoc(numerodoc);
             c.setPrimernombre(primernombre);
-            c.setPrimernombre(segundonombre);
+            c.setSegundonombre(segundonombre);
             c.setPrimerapellido(primerapellido);
             c.setCorreo(correo);
             c.setTelefono(telefono);
@@ -340,6 +351,54 @@ public class controladorcliente extends HttpServlet {
         else if (action.equalsIgnoreCase("volverinventario")) {
             acceso = menu;
         }
+        else if (action.equalsIgnoreCase("addinv")) {
+            acceso = addinv;
+        }else if (action.equalsIgnoreCase("agregarinv")) {
+
+            inventario inv      = new inventario();
+            Consultas con       = new Consultas();
+            String idproducto   = request.getParameter("txtidproducto");
+            String idproveedor  = request.getParameter("txtidproveedor");
+            int    cantidad     = Integer.parseInt(request.getParameter("txtcantidad"));
+            
+            inv.setIdproducto(idproducto);
+            inv.setIdproveedor(idproveedor);
+            inv.setCantidad(cantidad);
+            
+            con.agregarinv(inv);
+
+            acceso = listarinv;
+        }else if (action.equalsIgnoreCase("Editarinv")) {
+            request.setAttribute("idinv", request.getParameter("idinv"));
+            acceso = editinv;
+        }else if (action.equalsIgnoreCase("Actualizarinv")) {
+            inventario inv = new inventario();   
+            Consultas con = new Consultas();
+
+            String idproducto = request.getParameter("txtidproducto");
+            String idproveedor  = request.getParameter("txtnombreproveedor");
+            int cantidad      = Integer.parseInt(request.getParameter("txtcantidad"));
+            
+            inv.setIdproducto(idproducto);
+            inv.setIdproveedor(idproveedor);
+            inv.setCantidad(cantidad);
+       
+            con.editinv(inv);
+
+            acceso = listarinv;
+        }else if (action.equalsIgnoreCase("Eliminarinv")) {
+            String id = request.getParameter("idinv");
+    
+            Consultas con = new Consultas();
+            inventario inv = new inventario();
+            
+            inv = con.listinv(id);
+
+            con.eliminarinv(inv.getIdproducto(), inv.getIdproveedor());
+
+            acceso = listarinv;
+        } 
+        
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
         //response.sendRedirect(listar);
