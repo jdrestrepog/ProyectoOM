@@ -442,7 +442,7 @@ public class Consultas extends Conexion {
     public boolean editprod(producto p) {
         PreparedStatement ps;
 
-        String consulta = "UPDATE `VentaLociones`.`producto` SET `idproducto` = ' "
+        String consulta = "UPDATE `VentaLociones`.`producto` SET `idproducto` = '"
                 + p.getIdproducto() + "', `marca` = '" + p.getMarca() + "', `nombre` = '"
                 + p.getNombre() + "', `referencia` = '" + p.getReferencia() + "', `descripcion` = '"
                 + p.getDescripcion() + "', `aniolanzamiento` = '" + p.getAniolanzamiento() + "', `familiaolf` = '"
@@ -452,7 +452,7 @@ public class Consultas extends Conexion {
                 + p.getMililitros() + "', `onzas` = '" + p.getOnzas() + "', `uso` = '"
                 + p.getUso() + "', `preciocomp` = '" + p.getPreciocomp() + "', `precioventa` = '"
                 + p.getPrecioventa() + "', `descuento` = '" + p.getDescuento() + "', `preciodesc` = '"
-                + p.getPreciodesc() + "', `oferta` = '" + p.getOferta() + " 'WHERE (`idproducto` = '"
+                + p.getPreciodesc() + "', `oferta` = '" + p.getOferta() + "' WHERE (`idproducto` = '"
                 + p.getIdproducto() + "');";
 
         try {

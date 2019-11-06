@@ -88,6 +88,7 @@ public class Validacion extends HttpServlet {
                 else if(Cliente.equals(con.Autenticacion2(user, pass))){
                     request.setAttribute("usuario", user);
                     acceso = "shop.jsp";
+                    //acceso = "home.jsp";
                 }
                 else{
                     acceso = "index.jsp";
@@ -97,8 +98,10 @@ public class Validacion extends HttpServlet {
                 Logger.getLogger(Validacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        RequestDispatcher vista = request.getRequestDispatcher(acceso);
-        vista.forward(request, response);
+        //request.getRequestDispatcher("shop.jsp").forward(request, response);
+        request.getRequestDispatcher(acceso).forward(request, response);
+        //RequestDispatcher vista = request.getRequestDispatcher(acceso);
+        //vista.forward(request, response);
     }
 
     /**
