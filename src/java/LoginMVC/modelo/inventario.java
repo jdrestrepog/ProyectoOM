@@ -18,9 +18,9 @@ public class inventario {
     }
 
     public inventario(String idproducto, String idproveedor, int cantidad) {
-        this.idproducto = idproducto;
+        this.idproducto  = idproducto;
         this.idproveedor = idproveedor;
-        this.cantidad = cantidad;
+        this.cantidad    = cantidad;
     }
 
     public String getIdproducto() {

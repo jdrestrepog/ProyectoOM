@@ -13,6 +13,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +53,7 @@ public class Controlador extends HttpServlet {
     int cantidad = 1;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, MessagingException {
         String accion = request.getParameter("accion");
 
         p = con.listarproducto();
@@ -150,33 +160,31 @@ public class Controlador extends HttpServlet {
 
                 break;
             case "pago":
-                
+
                 inventario inv = new inventario();
-                
-                
+
                 for (int i = 0; i < listacarrito.size(); i++) {
                     // Obtenemos la cantidad en inventario por id producto
                     inv = con.listinv(listacarrito.get(i).getIdproducto());
-                    
-                    
+
                     // Modifico el auxiliar cantidad a la cantidad de la BD
                     int cantidad = inv.getCantidad();
-                    
+
                     //Hago cantida = cantidad menos la cantidad que hay en carrito
                     cantidad = cantidad - listacarrito.get(i).getCantidad();
-                    
+
                     //Actualizo la BD con la nueva cantidad
+                    //inv.setCantidad(cantidad);
                     inv.setCantidad(cantidad);
-                    
-                    con.editinv(inv);
-                    
-                } 
+
+                    con.editinv(inv);                   
+
+                    enviarmail(Integer.toString(listacarrito.get(i).getCantidad()), inv);
+
+                }
                 //Primero eliminamos todos los elementos de la lista
                 listacarrito.clear();
                 //Recorremos la lista para obtener el ID producto y la cantidad
-                for (int i = 0; i < listacarrito.size(); i++) {
-                    
-                }
 
                 request.getRequestDispatcher("pagos.jsp").forward(request, response);
                 break;
@@ -197,6 +205,45 @@ public class Controlador extends HttpServlet {
 
     }
 
+    public void enviarmail(String cantidad, inventario inv) throws MessagingException {
+
+        try {
+
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente   = "academico20191111@gmail.com";
+            String passwordRemitente = "Noviembre#321";
+            String correoReceptor    = "jdrestrepog@gmail.com";
+            //String asunto = "Mi primero correo en Java";
+            String asunto = "Ventas por pagina Web";
+            String mensaje = "Se han vendido: " + cantidad + " Unidad/es del producto: " + inv.getIdproducto();
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+        } catch (AddressException ex) {
+            //Logger.getLogger(envio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            //Logger.getLogger(envio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -209,7 +256,11 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -223,7 +274,11 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
