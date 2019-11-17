@@ -58,7 +58,6 @@ public class Consultas extends Conexion {
         rs = st.executeQuery(consulta);
         String administrador = "1";
         String cliente = "2";
-
         String c = "0";
 
         while (rs.next()) {

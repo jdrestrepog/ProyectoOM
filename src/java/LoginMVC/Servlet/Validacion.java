@@ -77,6 +77,8 @@ public class Validacion extends HttpServlet {
         } else {
             String user = request.getParameter("user");
             String pass = request.getParameter("pass");
+            
+            
             Consultas con = new Consultas();
             String Administrador = "1";
             String Cliente= "2";
@@ -88,7 +90,6 @@ public class Validacion extends HttpServlet {
                 else if(Cliente.equals(con.Autenticacion2(user, pass))){
                     request.setAttribute("usuario", user);
                     acceso = "shop.jsp";
-                    //acceso = "home.jsp";
                 }
                 else{
                     acceso = "index.jsp";
