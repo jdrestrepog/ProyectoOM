@@ -1,6 +1,6 @@
 <%-- 
-    Document   : menu
-    Created on : 19/09/2019, 12:01:39 AM
+    Document   : reportecompras
+    Created on : 16/11/2019, 06:05:43 PM
     Author     : juan
 --%>
 
@@ -41,19 +41,15 @@
         <br>
         <br>
         <div class="container">
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listar">Listar Cliente</a>
             <br>
             <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarp">Listar Proveedor</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarprod">Listar Producto</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarinv">Generar Inventario</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarcompras">Reporte compras</a>
+            <h1>Generar Reporte Ventas</h1>
+                <form action="controladorcliente">
+                    Fecha Inicio: <br>
+                    <input class="form-control" type="text" id="fechaini" name="fechaini"  placeholder="AAAA-MM-DD"><br>
+                    <br>
+                    <input class="btn btn-primary" type="submit" name="accion" value="generar" placeholder="Generar Reporte"><br>
+                </form>
         </div>
     </body>
 </html>

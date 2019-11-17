@@ -20,7 +20,7 @@
             <div class="col-8">
                 <%
                     Consultas c = new Consultas();
-                    producto p = new producto();
+                    producto  p = new producto();
                     String idproducto = request.getParameter("idprod");
 
                     p = c.listprod(idproducto);

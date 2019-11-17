@@ -1,9 +1,13 @@
 <%-- 
-    Document   : menu
-    Created on : 19/09/2019, 12:01:39 AM
+    Document   : listaventas
+    Created on : 17/11/2019, 01:26:00 PM
     Author     : juan
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="LoginMVC.modelo.compra"%>
+<%@page import="java.util.List"%>
+<%@page import="LoginMVC.modelo.Consultas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,22 +42,40 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
         </nav>
-        <br>
-        <br>
         <div class="container">
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listar">Listar Cliente</a>
+            <h1>Reporte Ventas</h1>
             <br>
             <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarp">Listar Proveedor</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarprod">Listar Producto</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarinv">Generar Inventario</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarcompras">Reporte compras</a>
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr class="text-center d-flex">
+                        <th class="col-sm-1">ID Compra</th>
+                        <th class="col-sm-2">ID Cliente</th>
+                        <th class="col-sm-2">Fecha</th>
+                        <th class="col-sm-2">ID Producto</th>
+                        <th class="col-sm-2">Cantidad</th>
+                    </tr>
+                </thead>
+                <%
+                    Consultas c = new Consultas();
+                    String fecha = request.getParameter("fechaini");
+                    List<compra> list = c.listarcompras(fecha);
+                    Iterator<compra> iter = list.iterator();
+                    compra comp = null;
+                    while (iter.hasNext()) {
+                        comp = iter.next();
+                %>
+                <tbody>
+                    <tr class="text-center d-flex">
+                        <td class="col-sm-1"><%= comp.getIdcompra() %></td>
+                        <td class="col-sm-2"><%= comp.getIdcliente() %></td>
+                        <td class="col-sm-2"><%= comp.getFecha() %></td>
+                        <td class="col-sm-2"><%= comp.getIdproducto() %></td>
+                        <td class="col-sm-2"><%= comp.getCantidad() %></td>
+                    </tr>
+                    <%}%>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

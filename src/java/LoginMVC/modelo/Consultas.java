@@ -565,7 +565,42 @@ public class Consultas extends Conexion {
         }
         return inv;
     }
+    public List listarcompras(String fecha){
+        ArrayList<compra> list = new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = 
+                "SELECT \n" +
+                    "a.idcompra, \n" +
+                    "a.idcliente, \n" +
+                    "a.fecha, \n" +
+                    "b.idproducto,\n" +
+                    "b.cantidad\n" +
+                "FROM\n" +
+                    "compra a\n" +
+                "INNER JOIN compraprod b \n" +
+                "ON a.idcompra = b.idcompra\n" +
+                "WHERE CAST(fecha AS DATE) >='"+fecha+"';";
+            
+            rs = st.executeQuery(consulta);
 
+            while (rs.next()) {
+                compra c = new compra();
+                c.setIdcompra(rs.getString("idcompra"));
+                c.setIdcliente(rs.getString("idcliente"));
+                c.setFecha(rs.getString("fecha"));
+                c.setIdproducto(rs.getString("idproducto"));
+                c.setCantidad(rs.getString("cantidad"));
+                
+                list.add(c);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
     public boolean editinv(inventario inv) {
         PreparedStatement ps;
 

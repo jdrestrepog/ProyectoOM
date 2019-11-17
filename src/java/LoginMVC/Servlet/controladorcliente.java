@@ -42,7 +42,9 @@ public class controladorcliente extends HttpServlet {
     String editprod   = "editprod.jsp";
     String menu       = "menu.jsp";
    
-    String addinv       = "addinv.jsp";
+    String addinv          = "addinv.jsp";
+    String reportecompras  = "reportecompras.jsp";
+    String listaventas     = "listaventas.jsp";
 
     cliente      c = new cliente();
     clienteDAO dao = new clienteDAO();
@@ -373,11 +375,11 @@ public class controladorcliente extends HttpServlet {
             acceso = editinv;
         }else if (action.equalsIgnoreCase("Actualizarinv")) {
             inventario inv = new inventario();   
-            Consultas con = new Consultas();
+            Consultas  con = new Consultas();
 
-            String idproducto = request.getParameter("txtidproducto");
+            String idproducto   = request.getParameter("txtidproducto");
             String idproveedor  = request.getParameter("txtnombreproveedor");
-            int cantidad      = Integer.parseInt(request.getParameter("txtcantidad"));
+            int cantidad        = Integer.parseInt(request.getParameter("txtcantidad"));
             
             inv.setIdproducto(idproducto);
             inv.setIdproveedor(idproveedor);
@@ -389,7 +391,7 @@ public class controladorcliente extends HttpServlet {
         }else if (action.equalsIgnoreCase("Eliminarinv")) {
             String id = request.getParameter("idinv");
     
-            Consultas con = new Consultas();
+            Consultas  con = new Consultas();
             inventario inv = new inventario();
             
             inv = con.listinv(id);
@@ -397,7 +399,13 @@ public class controladorcliente extends HttpServlet {
             con.eliminarinv(inv.getIdproducto(), inv.getIdproveedor());
 
             acceso = listarinv;
-        } 
+        } else if(action.equalsIgnoreCase("listarcompras")){
+            acceso = reportecompras;
+        }
+        else if(action.equalsIgnoreCase("generar")){
+            request.setAttribute("fechaini", request.getParameter("fechaini"));
+            acceso = listaventas;     
+        }
         
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
