@@ -89,7 +89,8 @@ public class Validacion extends HttpServlet {
                 }
                 else if(Cliente.equals(con.Autenticacion2(user, pass))){
                     request.setAttribute("usuario", user);
-                    acceso = "shop.jsp";
+                    //acceso = "shop.jsp";
+                    acceso = "carrito.jsp";
                 }
                 else{
                     acceso = "index.jsp";

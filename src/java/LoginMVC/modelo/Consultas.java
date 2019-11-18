@@ -152,6 +152,29 @@ public class Consultas extends Conexion {
         return c;
     }
 
+    public cliente listuser(String user) {
+        cliente c = new cliente();
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = "SELECT * FROM VentaLociones.cliente where correo ='" + user + "';";
+            rs = st.executeQuery(consulta);
+            while (rs.next()) {
+                c.setIdcliente(rs.getString("idcliente"));
+                c.setTipodoc(rs.getString("tipodoc"));
+                c.setNumerodoc(rs.getString("numerodoc"));
+                c.setPrimernombre(rs.getString("primernombre"));
+                c.setSegundonombre(rs.getString("segundonombre"));
+                c.setPrimerapellido(rs.getString("primerapellido"));
+                c.setCorreo(rs.getString("correo"));
+                c.setTelefono(rs.getString("telefono"));
+
+            }
+        } catch (Exception e) {
+        }
+        return c;
+    }
+
     public boolean edit(cliente c) {
         PreparedStatement ps;
 
@@ -545,6 +568,38 @@ public class Consultas extends Conexion {
         return true;
     }
 
+    public boolean agregarcompra(String idcliente, String fecha) {
+        PreparedStatement ps;
+        try {
+            String consulta = "INSERT INTO `VentaLociones`.`compra` (`idcliente`, `fecha`)"
+                    + " VALUES ('"+ idcliente + "','" + fecha + "');";
+
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            ex.toString();
+            return false;
+        }
+        return true;
+    }
+    public boolean agregarcompraprod(String idproducto, String idcliente, int idcompra, String candidad) {
+        PreparedStatement ps;
+        try {
+            String consulta = "INSERT INTO `VentaLociones`.`compraprod` (`idproducto`, `idcliente`, `idcompra`, `cantidad`)"
+                    + " VALUES ('"+ idproducto + "','" + idcliente + "','"+ idcompra + "','"+ candidad + "');";
+
+            ps = conn.prepareStatement(consulta);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Consultas.class.getName()).log(Level.SEVERE, null, ex);
+            ex.toString();
+            return false;
+        }
+        return true;
+    }
     public inventario listinv(String idproducto) {
         inventario inv = new inventario();
 
@@ -564,24 +619,41 @@ public class Consultas extends Conexion {
         }
         return inv;
     }
-    public List listarcompras(String fecha){
+
+    public String last_insert() {
+        inventario inv = new inventario();
+        String lastid="";
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = null;
+            String consulta = "SELECT LAST_INSERT_ID() as last_id;";
+            rs = st.executeQuery(consulta);
+            while (rs.next()) {
+                lastid = rs.getString("last_id");
+
+            }
+        } catch (Exception e) {
+        }
+        return lastid;
+    }
+    public List listarcompras(String fecha) {
         ArrayList<compra> list = new ArrayList<>();
         try {
             Statement st = conn.createStatement();
             ResultSet rs = null;
-            String consulta = 
-                "SELECT \n" +
-                    "a.idcompra, \n" +
-                    "a.idcliente, \n" +
-                    "a.fecha, \n" +
-                    "b.idproducto,\n" +
-                    "b.cantidad\n" +
-                "FROM\n" +
-                    "compra a\n" +
-                "INNER JOIN compraprod b \n" +
-                "ON a.idcompra = b.idcompra\n" +
-                "WHERE CAST(fecha AS DATE) >='"+fecha+"';";
-            
+            String consulta
+                    = "SELECT \n"
+                    + "a.idcompra, \n"
+                    + "a.idcliente, \n"
+                    + "a.fecha, \n"
+                    + "b.idproducto,\n"
+                    + "b.cantidad\n"
+                    + "FROM\n"
+                    + "compra a\n"
+                    + "INNER JOIN compraprod b \n"
+                    + "ON a.idcompra = b.idcompra\n"
+                    + "WHERE CAST(fecha AS DATE) >='" + fecha + "';";
+
             rs = st.executeQuery(consulta);
 
             while (rs.next()) {
@@ -591,7 +663,7 @@ public class Consultas extends Conexion {
                 c.setFecha(rs.getString("fecha"));
                 c.setIdproducto(rs.getString("idproducto"));
                 c.setCantidad(rs.getString("cantidad"));
-                
+
                 list.add(c);
             }
         } catch (SQLException ex) {
@@ -599,7 +671,7 @@ public class Consultas extends Conexion {
         }
         return list;
     }
-    
+
     public boolean editinv(inventario inv) {
         PreparedStatement ps;
 
@@ -612,7 +684,7 @@ public class Consultas extends Conexion {
         try {
             ps = conn.prepareStatement(consulta);
             ps.executeUpdate();
-            
+
         } catch (Exception e) {
         }
         return false;
@@ -625,7 +697,7 @@ public class Consultas extends Conexion {
         try {
             ps = conn.prepareStatement(consulta);
             ps.executeUpdate();
-            
+
         } catch (Exception e) {
         }
         return false;

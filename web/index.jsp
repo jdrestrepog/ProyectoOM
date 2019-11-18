@@ -51,7 +51,7 @@
                     <img class="img-fluid mx-auto d-block rounded"
                          <%--src="https://picsum.photos/id/870/300/200" />--%>
                          src="img/logo.png" />
-                    <form action="Autenticacion">
+                    <form action="Controlador">
                         <div class="form-group">
                             <label for="correo">Correo</label>
                             <input id="correo" name="user"
@@ -66,7 +66,7 @@
                         </div>
                         <input class="btn btn-primary mb-2" type="submit" name="accion" value="Entrar">
                         <br>
-                        <a href="Autenticacion?accion=Registrarse">Registrarse</a>
+                        <a href="Controlador?accion=Registrarse">Registrarse</a>
                     </form>
                 </div>
             </div>

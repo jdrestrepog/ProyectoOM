@@ -7,11 +7,14 @@ package LoginMVC.Servlet;
 
 import LoginMVC.modelo.Carrito;
 import LoginMVC.modelo.Consultas;
+import LoginMVC.modelo.cliente;
 import LoginMVC.modelo.inventario;
 import LoginMVC.modelo.producto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -51,6 +54,10 @@ public class Controlador extends HttpServlet {
     int item;
     float totalpagar = 0;
     int cantidad = 1;
+    String tipocliente = "";
+    String user;
+    String pass;
+    cliente c = new cliente();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, MessagingException {
@@ -61,7 +68,31 @@ public class Controlador extends HttpServlet {
         String idproducto;
         producto prod = new producto();
         Carrito car = new Carrito();
+        Consultas con = new Consultas();
         switch (accion) {
+            case "Registrarse":
+                request.getRequestDispatcher("Registrocliente.jsp").forward(request, response);
+            case "Entrar":
+                user = request.getParameter("user");
+                pass = request.getParameter("pass");
+
+                String Administrador = "1";
+                String Cliente = "2";
+
+                try {
+                    if (Administrador.equals(con.Autenticacion2(user, pass))) {
+                        request.getRequestDispatcher("menu.jsp").forward(request, response);
+                    } else if (Cliente.equals(con.Autenticacion2(user, pass))) {
+                        request.getRequestDispatcher("shop.jsp").forward(request, response);
+                        request.setAttribute("usuario", user);
+                    } else {
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(Validacion.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            break;
             case "Comprar":
                 totalpagar = 0;
                 idproducto = request.getParameter("id");
@@ -160,7 +191,20 @@ public class Controlador extends HttpServlet {
 
                 break;
             case "pago":
-
+                //Consultar ID Cliente
+                c = con.listuser(user);
+                //Consultar la Fecha del día
+                Calendar c1 = Calendar.getInstance();
+                String dia,
+                mes,
+                anio;
+                
+                int mes1 = c1.get(Calendar.MONTH) + 1;
+                
+                dia = Integer.toString(c1.get(Calendar.DATE));
+                mes = Integer.toString(mes1);
+                anio = Integer.toString(c1.get(Calendar.YEAR));
+                String fecha = anio + "-" + mes + "-" + dia;
                 inventario inv = new inventario();
 
                 for (int i = 0; i < listacarrito.size(); i++) {
@@ -177,8 +221,16 @@ public class Controlador extends HttpServlet {
                     //inv.setCantidad(cantidad);
                     inv.setCantidad(cantidad);
 
-                    con.editinv(inv);                   
-
+                    con.editinv(inv);
+                    //Insertar en tabla compra
+                    con.agregarcompra(c.getIdcliente(), fecha);
+                    //Obtener autoincremental
+                    String idcompra = con.last_insert();
+                    int idcomp = Integer.parseInt(idcompra);
+                    
+                    //Insertar en tabla compraprod
+                    
+                    con.agregarcompraprod(listacarrito.get(i).getIdproducto(), c.getIdcliente(), idcomp,Integer.toString(listacarrito.get(i).getCantidad()));
                     enviarmail(Integer.toString(listacarrito.get(i).getCantidad()), inv);
 
                 }
@@ -217,9 +269,9 @@ public class Controlador extends HttpServlet {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente   = "academico20191111@gmail.com";
+            String correoRemitente = "academico20191111@gmail.com";
             String passwordRemitente = "Noviembre#321";
-            String correoReceptor    = "jdrestrepog@gmail.com";
+            String correoReceptor = "jdrestrepog@gmail.com";
             //String asunto = "Mi primero correo en Java";
             String asunto = "Ventas por pagina Web";
             String mensaje = "Se han vendido: " + cantidad + " Unidad/es del producto: " + inv.getIdproducto();
