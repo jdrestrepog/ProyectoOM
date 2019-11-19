@@ -168,6 +168,7 @@ public class Consultas extends Conexion {
                 c.setPrimerapellido(rs.getString("primerapellido"));
                 c.setCorreo(rs.getString("correo"));
                 c.setTelefono(rs.getString("telefono"));
+                c.setDireccion(rs.getString("direccion"));
 
             }
         } catch (Exception e) {

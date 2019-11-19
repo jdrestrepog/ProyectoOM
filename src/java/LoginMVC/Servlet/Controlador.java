@@ -231,7 +231,7 @@ public class Controlador extends HttpServlet {
                     //Insertar en tabla compraprod
                     
                     con.agregarcompraprod(listacarrito.get(i).getIdproducto(), c.getIdcliente(), idcomp,Integer.toString(listacarrito.get(i).getCantidad()));
-                    enviarmail(Integer.toString(listacarrito.get(i).getCantidad()), inv);
+                    enviarmail(Integer.toString(listacarrito.get(i).getCantidad()), inv, c.getIdcliente(), c.getDireccion(), c.getPrimernombre(), c.getPrimerapellido());
 
                 }
                 //Primero eliminamos todos los elementos de la lista
@@ -257,7 +257,7 @@ public class Controlador extends HttpServlet {
 
     }
 
-    public void enviarmail(String cantidad, inventario inv) throws MessagingException {
+    public void enviarmail(String cantidad, inventario inv, String idcliente, String direccion, String nombre, String apellido) throws MessagingException {
 
         try {
 
@@ -269,12 +269,12 @@ public class Controlador extends HttpServlet {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "academico20191111@gmail.com";
+            String correoRemitente   = "academico20191111@gmail.com";
             String passwordRemitente = "Noviembre#321";
-            String correoReceptor = "jdrestrepog@gmail.com";
+            String correoReceptor    = "jdrestrepog@gmail.com";
             //String asunto = "Mi primero correo en Java";
             String asunto = "Ventas por pagina Web";
-            String mensaje = "Se han vendido: " + cantidad + " Unidad/es del producto: " + inv.getIdproducto();
+            String mensaje = "Se han vendido: " + cantidad + " Unidad/es del producto: " + inv.getIdproducto() + " Al cliente: " + idcliente + "Nombre: " + nombre + " " + apellido +  "Direccion: " + direccion;
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(correoRemitente));
 
