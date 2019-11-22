@@ -213,7 +213,12 @@ public class Controlador extends HttpServlet {
 
                     // Modifico el auxiliar cantidad a la cantidad de la BD
                     int cantidad = inv.getCantidad();
-
+                    
+                    //Si la cantidad en inventario del producto es <= 2 genero alarma de stock
+                    if (cantidad <= 2) {
+                        enviarmail_cantidad(listacarrito.get(i).getIdproducto(), cantidad);
+                    }
+   
                     //Hago cantida = cantidad menos la cantidad que hay en carrito
                     cantidad = cantidad - listacarrito.get(i).getCantidad();
 
@@ -228,12 +233,11 @@ public class Controlador extends HttpServlet {
                     String idcompra = con.last_insert();
                     int idcomp = Integer.parseInt(idcompra);
                     
-                    //Insertar en tabla compraprod
-                    
+                    //Insertar en tabla compraprod   
                     con.agregarcompraprod(listacarrito.get(i).getIdproducto(), c.getIdcliente(), idcomp,Integer.toString(listacarrito.get(i).getCantidad()));
                     enviarmail(Integer.toString(listacarrito.get(i).getCantidad()), inv, c.getIdcliente(), c.getDireccion(), c.getPrimernombre(), c.getPrimerapellido());
-
                 }
+                
                 //Primero eliminamos todos los elementos de la lista
                 listacarrito.clear();
                 //Recorremos la lista para obtener el ID producto y la cantidad
@@ -295,7 +299,44 @@ public class Controlador extends HttpServlet {
         }
 
     }
+    public void enviarmail_cantidad(String idproducto, int cantidad) throws MessagingException {
 
+        try {
+
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente   = "academico20191111@gmail.com";
+            String passwordRemitente = "Noviembre#321";
+            String correoReceptor    = "jdrestrepog@gmail.com";
+            //String asunto = "Mi primero correo en Java";
+            String asunto = "Alerta Inventario Producto: " + idproducto;
+            String mensaje = "Quedan: "+cantidad+ " Unidad/es  del producto: " + idproducto;
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+        } catch (AddressException ex) {
+            //Logger.getLogger(envio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            //Logger.getLogger(envio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
