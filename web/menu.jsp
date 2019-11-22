@@ -23,15 +23,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="Controlador?accion=home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="controladorcliente?accion=listar">Administrar Cliente</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ofertas del dia</a>
+                        <a class="nav-link" href="controladorcliente?accion=listarp">Administrar Proveedores</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="Controlador?accion=Carrito"><i class="fas fa-cart-plus"></i>(<label style="color: darkorange">${contador}</label>)Carrito</a>
+                        <a class="nav-link" href="controladorcliente?accion=listarprod">Administrar Productos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="controladorcliente?accion=listarinv">Administrar Inventario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="controladorcliente?accion=listarcompras">Reporte de compras</a>
+                    </li>                   
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -41,19 +46,17 @@
         <br>
         <br>
         <div class="container">
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listar">Listar Cliente</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarp">Listar Proveedor</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarprod">Listar Producto</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarinv">Generar Inventario</a>
-            <br>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=listarcompras">Reporte compras</a>
+                   <main role="main" class="container my-auto">
+            <div class="row">
+                <div id="login" class="col-lg-4 offset-lg-4 col-md-6 offset-md-3
+                     col-12">
+                    <h2 class="text-center">Bienvenido Administrador</h2>
+                    <img class="img-fluid mx-auto d-block rounded"
+                         <%--src="https://picsum.photos/id/870/300/200" />--%>
+                         src="img/logo.png" />
+                </div>
+            </div>
+        </main> 
         </div>
     </body>
 </html>

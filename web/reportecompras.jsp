@@ -23,15 +23,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="Controlador?accion=home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="controladorcliente?accion=listar">Administrar Cliente</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ofertas del dia</a>
+                        <a class="nav-link" href="controladorcliente?accion=listarp">Administrar Proveedores</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="Controlador?accion=Carrito"><i class="fas fa-cart-plus"></i>(<label style="color: darkorange">${contador}</label>)Carrito</a>
+                        <a class="nav-link" href="controladorcliente?accion=listarprod">Administrar Productos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="controladorcliente?accion=listarinv">Generar Inventario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="controladorcliente?accion=listarcompras">Reporte de compras</a>
+                    </li>   
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
