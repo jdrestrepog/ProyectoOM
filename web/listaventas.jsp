@@ -26,7 +26,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="controladorcliente?accion=listar">Administrar Cliente</a>
                     </li>
                     <li class="nav-item">
@@ -38,7 +38,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="controladorcliente?accion=listarinv">Generar Inventario</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="controladorcliente?accion=listarcompras">Reporte de compras</a>
                     </li>   
                 </ul>

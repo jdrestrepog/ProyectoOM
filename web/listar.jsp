@@ -32,10 +32,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="controladorcliente?accion=listarp">Administrar Proveedores</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link" href="controladorcliente?accion=listarprod">Administrar Productos</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link" href="controladorcliente?accion=listarinv">Generar Inventario</a>
                     </li>
                     <li class="nav-item">
