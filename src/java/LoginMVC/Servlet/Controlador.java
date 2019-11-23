@@ -278,7 +278,7 @@ public class Controlador extends HttpServlet {
             String correoReceptor    = "jdrestrepog@gmail.com";
             //String asunto = "Mi primero correo en Java";
             String asunto = "Ventas por pagina Web";
-            String mensaje = "Se han vendido: " + cantidad + " Unidad/es del producto: " + inv.getIdproducto() + " Al cliente: " + idcliente + "Nombre: " + nombre + " " + apellido +  "Direccion: " + direccion;
+            String mensaje = "Se han vendido: " + cantidad + " Unidad/es del producto: " + inv.getIdproducto() + " Al cliente: " + idcliente + " Nombre: " + nombre + " " + apellido +  " Direccion: " + direccion;
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(correoRemitente));
 
