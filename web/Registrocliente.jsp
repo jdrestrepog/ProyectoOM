@@ -36,12 +36,8 @@
                     <input class="form-control" type="text" placeholder="Correo Electronico" name="txtcorreo"><br>
                     Telefono: <br>
                     <input class="form-control" type="text" placeholder="Telefono" name="txttelefono"><br>
-                    Nombre Empresa: <br>
-                    <input class="form-control" type="text" placeholder="Campo Opcional" name="txtnomempresa"><br>
                     Direccion: <br>
                     <input class="form-control" type="text" placeholder="Direccion" name="txtdireccion"><br>
-                    Codigo postal: <br>
-                    <input class="form-control" type="text" placeholder="Codigo Postal" name="txtcodpostal"><br>
                     Ciudad: <br>
                     <input class="form-control" type="text" placeholder="Ciudad" name="txtciudad"><br>
                     Departamento: <br>

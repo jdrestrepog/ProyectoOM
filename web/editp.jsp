@@ -36,8 +36,6 @@
                     <input class="form-control" type="text" name="txtdireccion" value="<%= p.getDireccion()%>"><br>
                     Ciudad: <br>
                     <input class="form-control" type="text" name="txtciudad" value="<%= p.getCiudad()%>"><br>
-                    Codigo Postal: <br>
-                    <input class="form-control" type="text" name="txtcodpostal" value="<%= p.getCodpostal()%>"><br>
                     Provincia: <br>
                     <input class="form-control" type="text" name="txtprovincia" value="<%= p.getProvincia()%>"><br>
                     Pais: <br>

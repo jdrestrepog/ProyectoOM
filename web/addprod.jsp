@@ -28,32 +28,10 @@
                     <input class="form-control" type="text"   name="txtreferencia"><br>
                     Descripcion: <br>
                     <input class="form-control" type="text"   name="txtdescripcion"><br>
-                    Año Lanzamiento: <br>
-                    <input class="form-control" type="text"   name="txtaniolanzamiento"><br>
-                    Familia Olfativa: <br>
-                    <input class="form-control" type="text"   name="txtfamiliaolf"><br>
-                    Nota Salida: <br>
-                    <input class="form-control" type="text"   name="txtnotasalida"><br>
-                    Nota Corazon: <br>
-                    <input class="form-control" type="text"   name="txtnotacorazon"><br>
-                    Nota fondo: <br>
-                    <input class="form-control" type="text"   name="txtnotafondo"><br>
-                    Categoría: <br>
-                    <input class="form-control" type="text"   name="txtcategoria"><br>
-                    Tipo: <br>
-                    <input class="form-control" type="text"   name="txttipo"><br>
-                    Mililitros: <br>
-                    <input class="form-control" type="text"   name="txtmililitros"><br>
-                    Onzas: <br>
-                    <input class="form-control" type="text"   name="txtuso"><br>
                     Precio Compra: <br>
                     <input class="form-control" type="text"   name="txtpreciocompra"><br>
                     Precio Venta: <br>
                     <input class="form-control" type="text"   name="txtprecioventa"><br>
-                    Descuento: <br>
-                    <input class="form-control" type="text"   name="txtdescuento"><br>
-                    Precio Descuento: <br>
-                    <input class="form-control" type="text"   name="txtpreciodescuento"><br>
                     Oferta: <br>
                     <input class="form-control" type="text"   name="txtoferta"><br>
                     <br>

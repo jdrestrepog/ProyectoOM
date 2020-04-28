@@ -26,8 +26,6 @@
                     <input class="form-control" type="text"   name="txtdireccion"><br>
                     Ciudad: <br>
                     <input class="form-control" type="text"   name="txtciudad"><br>
-                    Codigo Postal: <br>
-                    <input class="form-control" type="text"   name="txtcodpostal"><br>
                     Provincia: <br>
                     <input class="form-control" type="text"   name="txtprovincia"><br>
                     Pais: <br>

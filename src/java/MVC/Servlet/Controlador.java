@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LoginMVC.Servlet;
+package MVC.Servlet;
 
 import LoginMVC.modelo.Carrito;
 import LoginMVC.modelo.Consultas;
@@ -235,7 +235,7 @@ public class Controlador extends HttpServlet {
                     
                     //Insertar en tabla compraprod   
                     con.agregarcompraprod(listacarrito.get(i).getIdproducto(), c.getIdcliente(), idcomp,Integer.toString(listacarrito.get(i).getCantidad()));
-                    enviarmail(Integer.toString(listacarrito.get(i).getCantidad()), inv, c.getIdcliente(), c.getDireccion(), c.getPrimernombre(), c.getPrimerapellido());
+                    enviarmail(Integer.toString(listacarrito.get(i).getCantidad()), inv, c.getIdcliente(), c.getDireccion(), c.getPrimernombre(), c.getPrimerapellido(), c.getCorreo(), c.getTelefono());
                 }
                 
                 //Primero eliminamos todos los elementos de la lista
@@ -261,7 +261,7 @@ public class Controlador extends HttpServlet {
 
     }
 
-    public void enviarmail(String cantidad, inventario inv, String idcliente, String direccion, String nombre, String apellido) throws MessagingException {
+    public void enviarmail(String cantidad, inventario inv, String idcliente, String direccion, String nombre, String apellido, String correo, String telefono) throws MessagingException {
 
         try {
 
@@ -278,7 +278,11 @@ public class Controlador extends HttpServlet {
             String correoReceptor    = "jdrestrepog@gmail.com";
             //String asunto = "Mi primero correo en Java";
             String asunto = "Ventas por pagina Web";
-            String mensaje = "Se han vendido: " + cantidad + " Unidad/es del producto: " + inv.getIdproducto() + " Al cliente: " + idcliente + " Nombre: " + nombre + " " + apellido +  " Direccion: " + direccion;
+            String mensaje = "Se han vendido: " + cantidad + " Unidad/es del producto: " + 
+                    inv.getIdproducto() + " Al cliente: " + idcliente + " Nombre: " 
+                    + nombre + " " + apellido +  " Direccion: " + direccion
+                    + " Correo: " + correo
+                    + " Telefono: " + telefono;
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(correoRemitente));
 

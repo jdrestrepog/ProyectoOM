@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LoginMVC.Servlet;
+package MVC.Servlet;
 
 import LoginMVC.modelo.Consultas;
 import LoginMVC.modelo.cliente;
@@ -77,9 +77,7 @@ public class controladorusuario extends HttpServlet {
             String segundoapellido = request.getParameter("txtsegundopellido");
             String correo          = request.getParameter("txtcorreo");
             String telefono        = request.getParameter("txttelefono");
-            String nomempresa      = request.getParameter("txtnomempresa");
             String direccion       = request.getParameter("txtdireccion");
-            String codpostal       = request.getParameter("txtcodpostal");
             String ciudad          = request.getParameter("txtciudad");
             String departamento    = request.getParameter("txdepartamento");
             String pais            = request.getParameter("txtpais");
@@ -94,9 +92,7 @@ public class controladorusuario extends HttpServlet {
             c.setSegundoapellido(segundoapellido);
             c.setCorreo(correo);
             c.setTelefono(telefono);
-            c.setNomempresa(nomempresa);
             c.setDireccion(direccion);
-            c.setCodpostal(codpostal);
             c.setCiudad(ciudad);
             c.setDepartamento(departamento);
             c.setPais(pais);

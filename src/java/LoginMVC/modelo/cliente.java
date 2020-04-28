@@ -20,15 +20,12 @@ public class cliente {
     String segundoapellido;
     String correo;
     String telefono;
-    String nomempresa;
     String direccion;
-    String codpostal;
     String ciudad;
     String departamento;
     String pais;
     String pass;
     String foto;
-    float  descuento;
     String tipocliente;
 
     public cliente() {
@@ -44,15 +41,12 @@ public class cliente {
         this.segundoapellido = segundoapellido;
         this.correo = correo;
         this.telefono = telefono;
-        this.nomempresa = nomempresa;
         this.direccion = direccion;
-        this.codpostal = codpostal;
         this.ciudad = ciudad;
         this.departamento = departamento;
         this.pais = pais;
         this.pass = pass;
         this.foto = foto;
-        this.descuento = descuento;
         this.tipocliente = tipocliente;
     }
 
@@ -92,16 +86,9 @@ public class cliente {
         return telefono;
     }
 
-    public String getNomempresa() {
-        return nomempresa;
-    }
 
     public String getDireccion() {
         return direccion;
-    }
-
-    public String getCodpostal() {
-        return codpostal;
     }
 
     public String getCiudad() {
@@ -122,10 +109,6 @@ public class cliente {
 
     public String getFoto() {
         return foto;
-    }
-
-    public float getDescuento() {
-        return descuento;
     }
 
     public String getTipocliente() {
@@ -168,17 +151,11 @@ public class cliente {
         this.telefono = telefono;
     }
 
-    public void setNomempresa(String nomempresa) {
-        this.nomempresa = nomempresa;
-    }
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
-    public void setCodpostal(String codpostal) {
-        this.codpostal = codpostal;
-    }
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
@@ -200,9 +177,6 @@ public class cliente {
         this.foto = foto;
     }
 
-    public void setDescuento(float descuento) {
-        this.descuento = descuento;
-    }
 
     public void setTipocliente(String tipocliente) {
         this.tipocliente = tipocliente;

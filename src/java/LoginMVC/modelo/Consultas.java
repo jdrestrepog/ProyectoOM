@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -92,9 +92,7 @@ public class Consultas extends Conexion {
                 cliente.setPrimerapellido(rs.getString("primerapellido"));
                 cliente.setCorreo(rs.getString("correo"));
                 cliente.setTelefono(rs.getString("telefono"));
-                cliente.setNomempresa(rs.getString("nomempresa"));
                 cliente.setDireccion(rs.getString("direccion"));
-                cliente.setCodpostal(rs.getString("codpostal"));
                 cliente.setCiudad(rs.getString("ciudad"));
                 cliente.setDepartamento(rs.getString("departamento"));
                 cliente.setPais(rs.getString("pais"));
@@ -110,12 +108,12 @@ public class Consultas extends Conexion {
     public boolean agregarCliente(cliente c) {
         PreparedStatement ps;
         try {
-            String consulta = "INSERT INTO VentaLociones.cliente (idcliente, tipodoc, numerodoc, "
-                    + "primernombre, segundonombre, primerapellido,segundoapellido, correo, telefono, nomempresa, direccion, codpostal, "
+            String consulta = "INSERT INTO ventas.cliente (idcliente, tipodoc, numerodoc, "
+                    + "primernombre, segundonombre, primerapellido,segundoapellido, correo, telefono, direccion, "
                     + "ciudad, departamento, pais, pass, tipocliente) VALUES ('"
                     + c.getIdcliente() + "','" + c.getTipodoc() + "','" + c.getNumerodoc() + "','" + c.getPrimernombre() + "','"
-                    + c.getSegundonombre() + "','" + c.getPrimerapellido() + "','" + c.getSegundoapellido() + "','" + c.getCorreo() + "','" + c.getTelefono() + "','" + c.getNomempresa() + "','"
-                    + c.getDireccion() + "','" + c.getCodpostal() + "','" + c.getCiudad() + "','" + c.getDepartamento() + "','"
+                    + c.getSegundonombre() + "','" + c.getPrimerapellido() + "','" + c.getSegundoapellido() + "','" + c.getCorreo() + "','" + c.getTelefono() + "','"
+                    + c.getDireccion() + "','" + c.getCiudad() + "','" + c.getDepartamento() + "','"
                     + c.getPais() + "','" + c.getPass() + "','" + c.getTipocliente() + "');";
 
             ps = conn.prepareStatement(consulta);
@@ -134,7 +132,7 @@ public class Consultas extends Conexion {
         try {
             Statement st = conn.createStatement();
             ResultSet rs = null;
-            String consulta = "SELECT * FROM VentaLociones.cliente where idcliente ='" + idcliente + "'";
+            String consulta = "SELECT * FROM ventas.cliente where idcliente ='" + idcliente + "'";
             rs = st.executeQuery(consulta);
             while (rs.next()) {
                 c.setIdcliente(rs.getString("idcliente"));
@@ -157,7 +155,7 @@ public class Consultas extends Conexion {
         try {
             Statement st = conn.createStatement();
             ResultSet rs = null;
-            String consulta = "SELECT * FROM VentaLociones.cliente where correo ='" + user + "';";
+            String consulta = "SELECT * FROM ventas.cliente where correo ='" + user + "';";
             rs = st.executeQuery(consulta);
             while (rs.next()) {
                 c.setIdcliente(rs.getString("idcliente"));
@@ -180,7 +178,7 @@ public class Consultas extends Conexion {
         PreparedStatement ps;
 
         //String sql="update persona set DNI='"+per.getDni()+"',Nombres='"+per.getNom()+"'where Id="+per.getId();
-        String consulta = "UPDATE `VentaLociones`.`cliente` SET `idcliente` = ' "
+        String consulta = "UPDATE `ventas`.`cliente` SET `idcliente` = ' "
                 + c.getIdcliente() + "', `tipodoc` = '" + c.getTipodoc() + "', `numerodoc` = '"
                 + c.getNumerodoc() + "', `primernombre` = '" + c.getPrimernombre() + "', `segundonombre` = '"
                 + c.getSegundonombre() + "', `primerapellido` = '" + c.getPrimerapellido() + "', `correo` = '"
@@ -197,7 +195,7 @@ public class Consultas extends Conexion {
 
     public boolean eliminar(String idcliente) {
         PreparedStatement ps;
-        String consulta = "DELETE FROM `VentaLociones`.`cliente` where idcliente=" + idcliente;
+        String consulta = "DELETE FROM `ventas`.`cliente` where idcliente=" + idcliente;
 
         try {
             ps = conn.prepareStatement(consulta);
@@ -223,7 +221,6 @@ public class Consultas extends Conexion {
                 p.setNombre(rs.getString("nombre"));
                 p.setDireccion(rs.getString("direccion"));
                 p.setCiudad(rs.getString("ciudad"));
-                p.setCodpostal(rs.getString("codpostal"));
                 p.setProvincia(rs.getString("provincia"));
                 p.setPais(rs.getString("pais"));
                 p.setNumtel(rs.getString("numtel"));
@@ -244,7 +241,7 @@ public class Consultas extends Conexion {
         try {
             Statement st = conn.createStatement();
             ResultSet rs = null;
-            String consulta = "SELECT * FROM VentaLociones.proveedor where idproveedor ='" + idproveedor + "'";
+            String consulta = "SELECT * FROM ventas.proveedor where idproveedor ='" + idproveedor + "'";
             rs = st.executeQuery(consulta);
             while (rs.next()) {
 
@@ -252,7 +249,6 @@ public class Consultas extends Conexion {
                 p.setNombre(rs.getString("nombre"));
                 p.setDireccion(rs.getString("direccion"));
                 p.setCiudad(rs.getString("ciudad"));
-                p.setCodpostal(rs.getString("codpostal"));
                 p.setProvincia(rs.getString("provincia"));
                 p.setPais(rs.getString("pais"));
                 p.setNumtel(rs.getString("numtel"));
@@ -268,10 +264,9 @@ public class Consultas extends Conexion {
     public boolean editp(proveedor p) {
         PreparedStatement ps;
 
-        String consulta = "UPDATE `VentaLociones`.`proveedor` SET `idproveedor` = ' "
+        String consulta = "UPDATE `ventas`.`proveedor` SET `idproveedor` = ' "
                 + p.getIdproveedor() + "', `nombre` = '" + p.getNombre() + "', `direccion` = '"
-                + p.getDireccion() + "', `ciudad` = '" + p.getCiudad() + "', `codpostal` = '"
-                + p.getCodpostal() + "', `provincia` = '" + p.getProvincia() + "', `pais` = '"
+                + p.getDireccion() + "', `ciudad` = '" + p.getCiudad() + "', `provincia` = '" + p.getProvincia() + "', `pais` = '"
                 + p.getPais() + "', `numtel` = '" + p.getNumtel() + "', `numfax` = '"
                 + p.getNumfax() + "', `correo` = '" + p.getCorreo() + "'WHERE (`idproveedor` = '"
                 + p.getIdproveedor() + "')";
@@ -287,10 +282,10 @@ public class Consultas extends Conexion {
     public boolean agregarproveedor(proveedor p) {
         PreparedStatement ps;
         try {
-            String consulta = "INSERT INTO VentaLociones.proveedor (idproveedor, nombre, direccion, "
-                    + "ciudad, codpostal, provincia, pais, numtel, numfax, correo ) VALUES ('"
+            String consulta = "INSERT INTO ventas.proveedor (idproveedor, nombre, direccion, "
+                    + "ciudad, provincia, pais, numtel, numfax, correo ) VALUES ('"
                     + p.getIdproveedor() + "','" + p.getNombre() + "','" + p.getDireccion() + "','" + p.getCiudad() + "','"
-                    + p.getCodpostal() + "','" + p.getProvincia() + "','" + p.getPais() + "','" + p.getNumtel() + "','" + p.getNumfax() + "','"
+                    + p.getProvincia() + "','" + p.getPais() + "','" + p.getNumtel() + "','" + p.getNumfax() + "','"
                     + p.getCorreo() + "')";
 
             ps = conn.prepareStatement(consulta);
@@ -307,14 +302,12 @@ public class Consultas extends Conexion {
     public boolean agregarproducto(producto p) {
         PreparedStatement ps;
         try {
-            String consulta = "INSERT INTO VentaLociones.producto (idproducto, marca, nombre, "
-                    + "referencia, descripcion, aniolanzamiento, familiaolf, notasalida, notacorazon, "
-                    + "notafondo, categoria, tipo, mililitros, onzas, uso, preciocomp, precioventa, "
-                    + "descuento, preciodesc, oferta ) VALUES ('"
+            String consulta = "INSERT INTO ventas.producto (idproducto, marca, nombre, "
+                    + "referencia, descripcion, preciocomp, precioventa, "
+                    + "oferta ) VALUES ('"
                     + p.getIdproducto() + "','" + p.getMarca() + "','" + p.getNombre() + "','" + p.getReferencia() + "','"
-                    + p.getDescripcion() + "','" + p.getAniolanzamiento() + "','" + p.getFamiliaolf() + "','" + p.getNotasalida() + "','" + p.getNotacorazon() + "','"
-                    + p.getNotafondo() + "','" + p.getCategoria() + "','" + p.getTipo() + "','" + p.getMililitros() + "','" + p.getOnzas() + "','"
-                    + p.getUso() + "','" + p.getPreciocomp() + "','" + p.getPrecioventa() + "','" + p.getDescuento() + "','" + p.getPreciodesc() + "','" + p.getOferta() + "');";
+                    + p.getDescripcion() + "','" 
+                    + p.getPreciocomp() + "','" + p.getPrecioventa() + "','" + p.getOferta() + "');";
 
             ps = conn.prepareStatement(consulta);
             ps.executeUpdate();
@@ -329,7 +322,7 @@ public class Consultas extends Conexion {
 
     public boolean eliminarp(String idproveedor) {
         PreparedStatement ps;
-        String consulta = "DELETE FROM `VentaLociones`.`proveedor` where idproveedor=" + idproveedor;
+        String consulta = "DELETE FROM `ventas`.`proveedor` where idproveedor=" + idproveedor;
 
         try {
             ps = conn.prepareStatement(consulta);
@@ -356,20 +349,8 @@ public class Consultas extends Conexion {
                 prod.setNombre(rs.getString("nombre"));
                 prod.setReferencia(rs.getString("referencia"));
                 prod.setDescripcion(rs.getString("descripcion"));
-                prod.setAniolanzamiento(rs.getString("aniolanzamiento"));
-                prod.setFamiliaolf(rs.getString("familiaolf"));
-                prod.setNotasalida(rs.getString("notasalida"));
-                prod.setNotacorazon(rs.getString("notacorazon"));
-                prod.setNotafondo(rs.getString("notafondo"));
-                prod.setCategoria(rs.getString("categoria"));
-                prod.setTipo(rs.getString("tipo"));
-                prod.setMililitros(rs.getString("mililitros"));
-                prod.setOnzas(rs.getString("onzas"));
-                prod.setUso(rs.getString("uso"));
                 prod.setPreciocomp(rs.getFloat("preciocomp"));
                 prod.setPrecioventa(rs.getFloat("precioventa"));
-                prod.setDescuento(rs.getFloat("descuento"));
-                prod.setPreciodesc(rs.getFloat("preciodesc"));
                 prod.setOferta(rs.getString("oferta"));
 
                 list.add(prod);
@@ -386,7 +367,7 @@ public class Consultas extends Conexion {
         try {
             Statement st = conn.createStatement();
             ResultSet rs = null;
-            String consulta = "SELECT * FROM VentaLociones.producto where oferta = 'si';";
+            String consulta = "SELECT * FROM ventas.producto where oferta = 'si';";
             rs = st.executeQuery(consulta);
 
             while (rs.next()) {
@@ -397,20 +378,8 @@ public class Consultas extends Conexion {
                 prod.setNombre(rs.getString("nombre"));
                 prod.setReferencia(rs.getString("referencia"));
                 prod.setDescripcion(rs.getString("descripcion"));
-                prod.setAniolanzamiento(rs.getString("aniolanzamiento"));
-                prod.setFamiliaolf(rs.getString("familiaolf"));
-                prod.setNotasalida(rs.getString("notasalida"));
-                prod.setNotacorazon(rs.getString("notacorazon"));
-                prod.setNotafondo(rs.getString("notafondo"));
-                prod.setCategoria(rs.getString("categoria"));
-                prod.setTipo(rs.getString("tipo"));
-                prod.setMililitros(rs.getString("mililitros"));
-                prod.setOnzas(rs.getString("onzas"));
-                prod.setUso(rs.getString("uso"));
                 prod.setPreciocomp(rs.getFloat("preciocomp"));
                 prod.setPrecioventa(rs.getFloat("precioventa"));
-                prod.setDescuento(rs.getFloat("descuento"));
-                prod.setPreciodesc(rs.getFloat("preciodesc"));
                 prod.setOferta(rs.getString("oferta"));
 
                 list.add(prod);
@@ -423,7 +392,7 @@ public class Consultas extends Conexion {
 
     public boolean eliminarprod(String idproducto) {
         PreparedStatement ps;
-        String consulta = "DELETE FROM `VentaLociones`.`producto` where idproducto=" + idproducto;
+        String consulta = "DELETE FROM `ventas`.`producto` where idproducto=" + idproducto;
 
         try {
             ps = conn.prepareStatement(consulta);
@@ -439,7 +408,7 @@ public class Consultas extends Conexion {
         try {
             Statement st = conn.createStatement();
             ResultSet rs = null;
-            String consulta = "SELECT * FROM VentaLociones.producto where idproducto ='" + idproducto + "'";
+            String consulta = "SELECT * FROM ventas.producto where idproducto ='" + idproducto + "'";
             rs = st.executeQuery(consulta);
             while (rs.next()) {
 
@@ -448,20 +417,8 @@ public class Consultas extends Conexion {
                 p.setNombre(rs.getString("nombre"));
                 p.setReferencia(rs.getString("referencia"));
                 p.setDescripcion(rs.getString("descripcion"));
-                p.setAniolanzamiento(rs.getString("aniolanzamiento"));
-                p.setFamiliaolf(rs.getString("familiaolf"));
-                p.setNotasalida(rs.getString("notasalida"));
-                p.setNotacorazon(rs.getString("notacorazon"));
-                p.setNotafondo(rs.getString("notafondo"));
-                p.setCategoria(rs.getString("categoria"));
-                p.setTipo(rs.getString("tipo"));
-                p.setMililitros(rs.getString("mililitros"));
-                p.setOnzas(rs.getString("onzas"));
-                p.setUso(rs.getString("uso"));
                 p.setPreciocomp(rs.getFloat("preciocomp"));
                 p.setPrecioventa(rs.getFloat("precioventa"));
-                p.setDescuento(rs.getFloat("descuento"));
-                p.setPreciodesc(rs.getFloat("preciodesc"));
                 p.setOferta(rs.getString("oferta"));
 
             }
@@ -473,17 +430,11 @@ public class Consultas extends Conexion {
     public boolean editprod(producto p) {
         PreparedStatement ps;
 
-        String consulta = "UPDATE `VentaLociones`.`producto` SET `idproducto` = '"
+        String consulta = "UPDATE `ventas`.`producto` SET `idproducto` = '"
                 + p.getIdproducto() + "', `marca` = '" + p.getMarca() + "', `nombre` = '"
                 + p.getNombre() + "', `referencia` = '" + p.getReferencia() + "', `descripcion` = '"
-                + p.getDescripcion() + "', `aniolanzamiento` = '" + p.getAniolanzamiento() + "', `familiaolf` = '"
-                + p.getFamiliaolf() + "', `notasalida` = '" + p.getNotasalida() + "', `notacorazon` = '"
-                + p.getNotacorazon() + "', `notafondo` = '" + p.getNotafondo() + "', `categoria` = '"
-                + p.getCategoria() + "', `tipo` = '" + p.getTipo() + "', `mililitros` = '"
-                + p.getMililitros() + "', `onzas` = '" + p.getOnzas() + "', `uso` = '"
-                + p.getUso() + "', `preciocomp` = '" + p.getPreciocomp() + "', `precioventa` = '"
-                + p.getPrecioventa() + "', `descuento` = '" + p.getDescuento() + "', `preciodesc` = '"
-                + p.getPreciodesc() + "', `oferta` = '" + p.getOferta() + "' WHERE (`idproducto` = '"
+                + p.getDescripcion() + "', `preciocomp` = '" + p.getPreciocomp() + "', `precioventa` = '"
+                + p.getPrecioventa() + "', `oferta` = '" + p.getOferta() + "' WHERE (`idproducto` = '"
                 + p.getIdproducto() + "');";
 
         try {
@@ -534,7 +485,7 @@ public class Consultas extends Conexion {
 
             Statement st = conn.createStatement();
             ResultSet rs = null;
-            String consulta = "SELECT * FROM VentaLociones.producto where idproducto ='" + idproducto + "'";
+            String consulta = "SELECT * FROM ventas.producto where idproducto ='" + idproducto + "'";
             rs = st.executeQuery(consulta);
             if (rs.next()) {
                 inputStream = rs.getBinaryStream("foto1");
@@ -554,7 +505,7 @@ public class Consultas extends Conexion {
     public boolean agregarinv(inventario inv) {
         PreparedStatement ps;
         try {
-            String consulta = "INSERT INTO VentaLociones.productoprov (idproducto, idproveedor, cantidad"
+            String consulta = "INSERT INTO ventas.productoprov (idproducto, idproveedor, cantidad"
                     + " ) VALUES ('"
                     + inv.getIdproducto() + "','" + inv.getIdproveedor() + "','" + inv.getCantidad() + "');";
 
@@ -572,7 +523,7 @@ public class Consultas extends Conexion {
     public boolean agregarcompra(String idcliente, String fecha) {
         PreparedStatement ps;
         try {
-            String consulta = "INSERT INTO `VentaLociones`.`compra` (`idcliente`, `fecha`)"
+            String consulta = "INSERT INTO `ventas`.`compra` (`idcliente`, `fecha`)"
                     + " VALUES ('"+ idcliente + "','" + fecha + "');";
 
             ps = conn.prepareStatement(consulta);
@@ -588,7 +539,7 @@ public class Consultas extends Conexion {
     public boolean agregarcompraprod(String idproducto, String idcliente, int idcompra, String candidad) {
         PreparedStatement ps;
         try {
-            String consulta = "INSERT INTO `VentaLociones`.`compraprod` (`idproducto`, `idcliente`, `idcompra`, `cantidad`)"
+            String consulta = "INSERT INTO `ventas`.`compraprod` (`idproducto`, `idcliente`, `idcompra`, `cantidad`)"
                     + " VALUES ('"+ idproducto + "','" + idcliente + "','"+ idcompra + "','"+ candidad + "');";
 
             ps = conn.prepareStatement(consulta);
@@ -607,7 +558,7 @@ public class Consultas extends Conexion {
         try {
             Statement st = conn.createStatement();
             ResultSet rs = null;
-            String consulta = "SELECT * FROM VentaLociones.productoprov where idproducto ='" + idproducto + "'";
+            String consulta = "SELECT * FROM ventas.productoprov where idproducto ='" + idproducto + "'";
             rs = st.executeQuery(consulta);
             while (rs.next()) {
 
@@ -678,7 +629,7 @@ public class Consultas extends Conexion {
 
         String cantidad = Integer.toString(inv.getCantidad());
 
-        String consulta = "UPDATE `VentaLociones`.`productoprov` SET `cantidad` = '"
+        String consulta = "UPDATE `ventas`.`productoprov` SET `cantidad` = '"
                 + cantidad + "' WHERE (`idproducto` = '"
                 + inv.getIdproducto() + "') and (`idproveedor` = '" + inv.getIdproveedor() + "');";
 
@@ -693,7 +644,7 @@ public class Consultas extends Conexion {
 
     public boolean eliminarinv(String idproducto, String idproveedor) {
         PreparedStatement ps;
-        String consulta = "DELETE FROM `VentaLociones`.`productoprov` WHERE (`idproducto` = '" + idproducto + "') and (`idproveedor` = '" + idproveedor + "');";
+        String consulta = "DELETE FROM `ventas`.`productoprov` WHERE (`idproducto` = '" + idproducto + "') and (`idproveedor` = '" + idproveedor + "');";
 
         try {
             ps = conn.prepareStatement(consulta);

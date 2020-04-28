@@ -14,7 +14,6 @@ public class proveedor {
     String nombre;
     String direccion;
     String ciudad;
-    String codpostal;
     String provincia;
     String pais;
     String numtel;
@@ -26,7 +25,6 @@ public class proveedor {
         this.nombre = nombre;
         this.direccion = direccion;
         this.ciudad = ciudad;
-        this.codpostal = codpostal;
         this.provincia = provincia;
         this.pais = pais;
         this.numtel = numtel;
@@ -51,10 +49,6 @@ public class proveedor {
 
     public String getCiudad() {
         return ciudad;
-    }
-
-    public String getCodpostal() {
-        return codpostal;
     }
 
     public String getProvincia() {
@@ -91,10 +85,6 @@ public class proveedor {
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
-    }
-
-    public void setCodpostal(String codpostal) {
-        this.codpostal = codpostal;
     }
 
     public void setProvincia(String provincia) {

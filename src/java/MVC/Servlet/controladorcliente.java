@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LoginMVC.Servlet;
+package MVC.Servlet;
 
 import LoginMVC.modelo.Consultas;
 import LoginMVC.modelo.cliente;
 import LoginMVC.modelo.inventario;
 import LoginMVC.modelo.producto;
 import LoginMVC.modelo.proveedor;
-import com.sun.corba.se.spi.protocol.RequestDispatcherDefault;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -76,9 +75,7 @@ public class controladorcliente extends HttpServlet {
             String segundoapellido = request.getParameter("txtsegundoapellido");
             String correo = request.getParameter("txtcorreo");
             String telefono = request.getParameter("txttelefono");
-            String nomempresa = request.getParameter("txtnomempresa");
             String direccion = request.getParameter("txtdireccion");
-            String codpostal = request.getParameter("txtcodpostal");
             String ciudad = request.getParameter("txtciudad");
             String departamento = request.getParameter("txdepartamento");
             String pais = request.getParameter("txtpais");
@@ -94,9 +91,7 @@ public class controladorcliente extends HttpServlet {
             c.setSegundoapellido(segundoapellido);
             c.setCorreo(correo);
             c.setTelefono(telefono);
-            c.setNomempresa(nomempresa);
             c.setDireccion(direccion);
-            c.setCodpostal(codpostal);
             c.setCiudad(ciudad);
             c.setDepartamento(departamento);
             c.setPais(pais);
@@ -122,9 +117,7 @@ public class controladorcliente extends HttpServlet {
             String primerapellido = request.getParameter("txtprimerapellido");
             String correo = request.getParameter("txtcorreo");
             String telefono = request.getParameter("txttelefono");
-            String nomempresa = request.getParameter("txtnomempresa");
             String direccion = request.getParameter("txtdireccion");
-            String codpostal = request.getParameter("txtcodpostal");
             String ciudad = request.getParameter("txtciudad");
             String departamento = request.getParameter("txdepartamento");
             String pais = request.getParameter("txtpais");
@@ -138,9 +131,7 @@ public class controladorcliente extends HttpServlet {
             c.setPrimerapellido(primerapellido);
             c.setCorreo(correo);
             c.setTelefono(telefono);
-            c.setNomempresa(nomempresa);
             c.setDireccion(direccion);
-            c.setCodpostal(codpostal);
             c.setCiudad(ciudad);
             c.setDepartamento(departamento);
             c.setPais(pais);
@@ -169,7 +160,6 @@ public class controladorcliente extends HttpServlet {
             String nombreproveedor = request.getParameter("txtnombreproveedor");
             String direccion = request.getParameter("txtdireccion");
             String ciudad = request.getParameter("txtciudad");
-            String codpostal = request.getParameter("txtcodpostal");
             String provincia = request.getParameter("txtprovincia");
             String pais = request.getParameter("txtpais");
             String telefono = request.getParameter("txttelefono");
@@ -180,7 +170,6 @@ public class controladorcliente extends HttpServlet {
             p.setNombre(nombreproveedor);
             p.setDireccion(direccion);
             p.setCiudad(ciudad);
-            p.setCodpostal(codpostal);
             p.setProvincia(provincia);
             p.setPais(pais);
             p.setNumtel(telefono);
@@ -198,7 +187,6 @@ public class controladorcliente extends HttpServlet {
             String nombreproveedor = request.getParameter("txtnombre");
             String direccion = request.getParameter("txtdireccion");
             String ciudad = request.getParameter("txtciudad");
-            String codpostal = request.getParameter("txtcodpostal");
             String provincia = request.getParameter("txtprovincia");
             String pais = request.getParameter("txtpais");
             String telefono = request.getParameter("txttelefono");
@@ -209,7 +197,6 @@ public class controladorcliente extends HttpServlet {
             p.setNombre(nombreproveedor);
             p.setDireccion(direccion);
             p.setCiudad(ciudad);
-            p.setCodpostal(codpostal);
             p.setProvincia(provincia);
             p.setPais(pais);
             p.setNumtel(telefono);
@@ -243,19 +230,8 @@ public class controladorcliente extends HttpServlet {
             String nombre = request.getParameter("txtnombre");
             String referencia = request.getParameter("txtreferencia");
             String descripcion = request.getParameter("txtdescripcion");
-            String aniolanzamiento = request.getParameter("txtaniolanzamiento");
-            String familiaolf = request.getParameter("txtfamiliaolf");
-            String notasalida = request.getParameter("txtnotasalida");
-            String notacorazon = request.getParameter("txtnotacorazon");
-            String notafondo = request.getParameter("txtnotafondo");
-            String categoria = request.getParameter("txtcategoria");
-            String tipo = request.getParameter("txttipo");
-            String mililitros = request.getParameter("txtmililitros");
-            String uso = request.getParameter("txtuso");
             String preciocompra = request.getParameter("txtpreciocompra");
             String precioventa = request.getParameter("txtprecioventa");
-            String descuento = request.getParameter("txtdescuento");
-            String preciodescuento = request.getParameter("txtpreciodescuento");
             String oferta = request.getParameter("txtoferta");
 
             prod.setIdproducto(idproducto);
@@ -263,20 +239,8 @@ public class controladorcliente extends HttpServlet {
             prod.setNombre(nombre);
             prod.setReferencia(referencia);
             prod.setDescripcion(descripcion);
-            prod.setAniolanzamiento(aniolanzamiento);
-            prod.setAniolanzamiento(aniolanzamiento);
-            prod.setFamiliaolf(familiaolf);
-            prod.setNotasalida(notasalida);
-            prod.setNotacorazon(notacorazon);
-            prod.setNotafondo(notafondo);
-            prod.setCategoria(categoria);
-            prod.setTipo(tipo);
-            prod.setMililitros(mililitros);
-            prod.setUso(uso);
             prod.setPreciocomp(Float.parseFloat(preciocompra));
             prod.setPrecioventa(Float.parseFloat(precioventa));
-            prod.setDescuento(Float.parseFloat(descuento));
-            prod.setPreciodesc(Float.parseFloat(preciodescuento));
             prod.setOferta(oferta);
 
             con.agregarproducto(prod);
@@ -303,20 +267,8 @@ public class controladorcliente extends HttpServlet {
             String nombre          = request.getParameter("txtnombre");
             String referencia      = request.getParameter("txtreferencia");
             String descripcion     = request.getParameter("txtdescripcion");
-            String aniolanzamiento = request.getParameter("txtaniolanzamiento");
-            String familiaolfativa = request.getParameter("txtfamiliaolfativa");
-            String notasalida      = request.getParameter("txtnotasalida");
-            String notacorazon     = request.getParameter("txtnotacorazon");
-            String notafondo       = request.getParameter("txtnotafondo");
-            String categoria       = request.getParameter("txtcategoria");
-            String tipo            = request.getParameter("txttipo");
-            String mililitros      = request.getParameter("txtmililitros");
-            String onzas           = request.getParameter("txtonzas");
-            String uso             = request.getParameter("txtuso");
             String preciocompra    = request.getParameter("txtpreciocompra");
             String precioventa     = request.getParameter("txtprecioventa");
-            String descuento       = request.getParameter("txtdescuento");
-            String preciodescuento = request.getParameter("txtpreciodescuento");
             String oferta          = request.getParameter("txtoferta");
 
             p.setIdproducto(idproducto);
@@ -324,20 +276,8 @@ public class controladorcliente extends HttpServlet {
             p.setNombre(nombre);
             p.setReferencia(referencia);
             p.setDescripcion(descripcion);
-            p.setAniolanzamiento(aniolanzamiento);
-            p.setFamiliaolf(familiaolfativa);
-            p.setNotasalida(notasalida);
-            p.setNotacorazon(notacorazon);
-            p.setNotafondo(notafondo);
-            p.setCategoria(categoria);
-            p.setTipo(tipo);
-            p.setMililitros(mililitros);
-            p.setOnzas(onzas);
-            p.setUso(uso);
             p.setPreciocomp(Float.parseFloat(preciocompra));
             p.setPrecioventa(Float.parseFloat(precioventa));
-            p.setDescuento(Float.parseFloat(descuento));
-            p.setPreciodesc(Float.parseFloat(preciodescuento));
             p.setOferta(oferta);
             
             con.editprod(p);

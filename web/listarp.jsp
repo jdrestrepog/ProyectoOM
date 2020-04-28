@@ -22,7 +22,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Tienda lociones</a>
+            <a class="navbar-brand" href="#">Tienda OM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -45,10 +45,10 @@
                         <a class="nav-link" href="controladorcliente?accion=listarcompras">Reporte de compras</a>
                     </li>   
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+<!--                <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                </form>-->
         </nav>
         <div class="container">
             <h1>Proveedores</h1>

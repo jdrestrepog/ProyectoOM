@@ -22,7 +22,7 @@ public class Conexion {
     //public static final String HOST = "127.0.0.1";
     public static final String HOST = "localhost";
     public static final String PORT = "3306";
-    public static final String DATABASE = "VentaLociones?autoReconnect=true&useSSL=false";
+    public static final String DATABASE = "ventas?autoReconnect=true&useSSL=false";
     //public static final String CLASSNAME = "com.mysql.jdbc.Driver";
     public static final String CLASSNAME = "com.mysql.cj.jdbc.Driver";
     public static final String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;

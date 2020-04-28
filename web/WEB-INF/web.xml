@@ -2,23 +2,23 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>Validacion</servlet-name>
-        <servlet-class>LoginMVC.Servlet.Validacion</servlet-class>
+        <servlet-class>MVC.Servlet.Validacion</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>controladorcliente</servlet-name>
-        <servlet-class>LoginMVC.Servlet.controladorcliente</servlet-class>
+        <servlet-class>MVC.Servlet.controladorcliente</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>controladorusuario</servlet-name>
-        <servlet-class>LoginMVC.Servlet.controladorusuario</servlet-class>
+        <servlet-class>MVC.Servlet.controladorusuario</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controlador</servlet-name>
-        <servlet-class>LoginMVC.Servlet.Controlador</servlet-class>
+        <servlet-class>MVC.Servlet.Controlador</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorIMG</servlet-name>
-        <servlet-class>LoginMVC.Servlet.ControladorIMG</servlet-class>
+        <servlet-class>MVC.Servlet.ControladorIMG</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Validacion</servlet-name>

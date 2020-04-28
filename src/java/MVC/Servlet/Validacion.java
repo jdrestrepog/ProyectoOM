@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LoginMVC.Servlet;
+package MVC.Servlet;
 
 import LoginMVC.modelo.Consultas;
 import java.io.IOException;

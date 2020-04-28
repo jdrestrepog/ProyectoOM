@@ -36,12 +36,8 @@
                     <input class="form-control" type="text"   name="txtcorreo"><br>
                     Telefono: <br>
                     <input class="form-control" type="text"   name="txttelefono"><br>
-                    Nombre Empresa: <br>
-                    <input class="form-control" type="text"   name="txtnomempresa"><br>
                     Direccion: <br>
                     <input class="form-control" type="text"   name="txtdireccion"><br>
-                    Codigo postal: <br>
-                    <input class="form-control" type="text"   name="txtcodpostal"><br>
                     Ciudad: <br>
                     <input class="form-control" type="text"   name="txtciudad"><br>
                     Departamento: <br>
