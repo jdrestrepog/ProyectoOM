@@ -14,20 +14,35 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div class="container">
+        <div class="container border">
             <div>
-                <br>
-                <h1>Agregar Producto al inventario</h1>
+                <h2 class="border-bottom">Agregar Producto al inventario</h2>
+                
                 <form action="controladorcliente">
-                    ID Producto: <br>
-                    <input class="form-control" type="text"   name="txtidproducto"><br>
-                    ID Proveedor: <br>
-                    <input class="form-control" type="text"   name="txtidproveedor"><br>
-                    Cantidad: <br>
-                    <input class="form-control" type="text"   name="txtcantidad"><br>
-   
-                    <br>
-                    <input class="btn btn-primary" type="submit" name="accion" value="agregarinv"> <br>
+                  
+                     <div class="form-group col-md-12">
+                        <label class="col-md-3">ID Producto:</label>
+                        <div class="col-md-12"> 
+                             <input class="form-control" type="text"   name="txtidproducto">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-12">
+                        <label class="col-md-3">ID Proveedor:</label>
+                        <div class="col-md-12"> 
+                            <input class="form-control" type="text"   name="txtidproveedor">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-12">
+                        <label class="col-md-3">Cantidad:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtcantidad">
+                        </div>
+                    </div>
+                    
+                   <div class="form-group col-md-12">
+                    <input class="btn btn-primary" type="submit" name="accion" value="agregarinv">
+                      </div>
+                   
                 </form>  
             </div>
         </div>

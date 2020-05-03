@@ -18,11 +18,12 @@ import java.util.logging.Logger;
 public class Conexion {
 
     public static final String USERNAME = "root";
-    public static final String PASSWORD = "password12345678";
+    public static final String PASSWORD = "admin";
     //public static final String HOST = "127.0.0.1";
     public static final String HOST = "localhost";
     public static final String PORT = "3306";
-    public static final String DATABASE = "ventas?autoReconnect=true&useSSL=false";
+    //public static final String DATABASE = "ventas?autoReconnect=true&useSSL=false";
+    public static final String DATABASE = "ventas?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
     //public static final String CLASSNAME = "com.mysql.jdbc.Driver";
     public static final String CLASSNAME = "com.mysql.cj.jdbc.Driver";
     public static final String URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE;

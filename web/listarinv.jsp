@@ -47,19 +47,24 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>-->
         </nav>
-        <div class="container">
-            <h1>Inventario</h1>
-            <br>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=addinv">Agregar Producto</a>
-            <br>
-            <br>
-            <table class="table table-light">
+        <div class="col-md-12">
+           
+            <br/>
+            <div class="row" >
+                <div class="col-md-6 text-left"> 
+                    <h2>Inventario</h2>
+                </div>
+                <div class="col-md-6 text-right" > 
+                <a class="btn btn-success btn-sm " href="controladorcliente?accion=addinv">Agregar Producto</a>
+            </div>
+            </div>
+            <table class="table table-light table-bordered">
                 <thead class="thead-light">
-                    <tr class="text-center d-flex">
-                        <th class="col-sm-1">ID Producto</th>
-                        <th class="col-sm-1">ID Proveedor</th>
-                        <th class="col-sm-1">Cantidad disponible</th>
-                        <th class="col-sm-2">Acciones</th>
+                    <tr >
+                        <th class="text-center">ID Producto</th>
+                        <th class="text-center">ID Proveedor</th>
+                        <th class="text-center">Cantidad disponible</th>
+                        <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
                 <%
@@ -71,13 +76,13 @@
                         p = iter.next();
                 %>
                 <tbody>
-                    <tr class="text-center d-flex">
-                        <td class="col-sm-1"><%= p.getIdproducto()%></td>
-                        <td class="col-sm-1"><%= p.getIdproveedor()%></td>
-                        <td class="col-sm-1"><%= p.getCantidad()%></td>  
-                        <td class="col-sm-2">
-                            <a class="btn btn-warning btn-dark bg-dark" href="controladorcliente?accion=Editarinv&idinv=<%=p.getIdproducto()%>">Editar</a>
-                            <a class="btn btn-danger" href="controladorcliente?accion=Eliminarinv&idinv=<%=p.getIdproducto()%>">Eliminar</a>
+                    <tr >
+                        <td ><%= p.getIdproducto()%></td>
+                        <td ><%= p.getIdproveedor()%></td>
+                        <td ><%= p.getCantidad()%></td>  
+                        <td >
+                            <a class="btn btn-warning btn-dark bg-dark btn-sm" href="controladorcliente?accion=Editarinv&idinv=<%=p.getIdproducto()%>">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="controladorcliente?accion=Eliminarinv&idinv=<%=p.getIdproducto()%>">Eliminar</a>
                             <input name="idprov" name="idprov" type="hidden" value="${p.getIdproveedor()}">
                         </td>
                     </tr>

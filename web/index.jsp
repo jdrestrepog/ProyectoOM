@@ -43,12 +43,16 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
         </nav>
+                    <br/>
         <main role="main" class="container my-auto">
-            <div class="row">
-                <div id="login" class="col-lg-4 offset-lg-4 col-md-6 offset-md-3
-                     col-12">
-                    <h2 class="text-center">Bienvenido</h2>
-                    <img class="img-fluid mx-auto d-block rounded"
+              <div class="row">
+                <div id="login" class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 
+                     col-12 card">
+                    <article class="card-body" >
+                        
+                    
+                    <h4 class="text-center card-title">Bienvenido</h4>
+                    <img class="img-fluid mx-auto d-block rounded" style="width: 70px"
                          <%--src="https://picsum.photos/id/870/300/200" />--%>
                          src="img/logo.png" />
                     <form action="Controlador">
@@ -64,10 +68,14 @@
                                    class="form-control" type="password"
                                    placeholder="Contraseña">
                         </div>
-                        <input class="btn btn-primary mb-2" type="submit" name="accion" value="Entrar">
-                        <br>
-                        <a href="Controlador?accion=Registrarse">Registrarse</a>
-                    </form>
+                          <div class="form-group">
+                         
+                              <input class="btn btn-primary btn-block" type="submit" name="accion" value="Entrar">
+                         <a class="text-center" href="Controlador?accion=Registrarse">Registrarse</a>
+                  
+                          </div> <br>
+                      </form>
+                </article>
                 </div>
             </div>
         </main>

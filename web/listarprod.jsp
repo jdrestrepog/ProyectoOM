@@ -47,22 +47,27 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>-->
         </nav>
-        <div class="container">
-            <h1>Productos</h1>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=addprod">Agregar Producto</a>
-            <br>
-            <br>
-            <table class="table table-light">
+        <div class="col-md-12">
+            <br/>
+            <div class="row" >
+                <div class="col-md-6 text-left"> 
+                    <h2>Productos</h2>
+                </div>
+                <div class="col-md-6 text-right" > 
+                  <a class="btn btn-success  btn-sm" href="controladorcliente?accion=addprod">Agregar Producto</a>
+              </div>
+            </div>
+            <table class="col-md-12 tbl table table-bordered">
                 <thead class="thead-light">
-                    <tr class="text-center d-flex">
-                        <th class="col-sm-1">ID Producto</th>
-                        <th class="col-sm-2">Marca</th>
-                        <th class="col-sm-2">Nombre</th>
-                        <th class="col-sm-2">Descripción</th>
-                        <th class="col-sm-2">Precio Venta</th>
-                        <th class="col-sm-2">Precio Con Descuento</th>
-                        <th class="col-sm-1">Oferta</th>
-                        <th class="col-sm-3">Acciones   </th>
+                    <tr class="text-center">
+                        <th class="text-center">ID Producto</th>
+                        <th class="text-center">Marca</th>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Descripción</th>
+                        <th class="text-center">Precio Venta</th>
+                       
+                        <th class="text-center">Oferta</th>
+                        <th class="text-center">Acciones  </th>
                     </tr>
                 </thead>
                 <%
@@ -74,16 +79,16 @@
                         p = iter.next();
                 %>
                 <tbody>
-                    <tr class="text-center d-flex">
-                        <td class="col-sm-1"><%= p.getIdproducto()%></td>
-                        <td class="col-sm-2"><%= p.getMarca()%></td>
-                        <td class="col-sm-2"><%= p.getNombre()%></td>
-                        <td class="col-sm-2"><%= p.getDescripcion()%></td>
-                        <td class="col-sm-2"><%= p.getPrecioventa()%></td>
-                        <td class="col-sm-1"><%= p.getOferta()%></td>
-                        <td class="col-sm-3">
-                            <a class="btn btn-warning btn-dark bg-dark" href="controladorcliente?accion=Editarprod&idprod=<%=  p.getIdproducto()%>">Editar</a>
-                            <a class="btn btn-danger"  href="controladorcliente?accion=Eliminarprod&idprod=<%= p.getIdproducto()%>">Eliminar</a>
+                    <tr >
+                        <td ><%= p.getIdproducto()%></td>
+                        <td ><%= p.getMarca()%></td>
+                        <td ><%= p.getNombre()%></td>
+                        <td ><%= p.getDescripcion()%></td>
+                        <td ><%= p.getPrecioventa()%></td>
+                        <td ><%= p.getOferta()%></td>
+                        <td >
+                            <a class="btn btn-warning btn-dark bg-dark btn-sm" href="controladorcliente?accion=Editarprod&idprod=<%=  p.getIdproducto()%>">Editar</a>
+                            <a class="btn btn-danger btn-sm"  href="controladorcliente?accion=Eliminarprod&idprod=<%= p.getIdproducto()%>">Eliminar</a>
                         </td>
                     </tr>
                     <%}%>

@@ -50,21 +50,26 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>-->
         </nav>
-        <div class="container">
-            <h1>Proveedores</h1>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=addp">Agregar Proveedor</a>
-            <br>
-            <br>
-            <table class="table table-light">
+        <div class="col-md-12">
+            <br/>
+            <div class="row" >
+                <div class="col-md-6 text-left"> 
+                    <h2>Proveedores</h2>
+                </div>
+                <div class="col-md-6 text-right" > 
+              <a class="btn btn-success btn-sm" href="controladorcliente?accion=addp">Agregar Proveedor</a>
+             </div>
+            </div>
+         <table class="col-md-12 tbl table table-bordered">
                 <thead class="thead-light">
-                    <tr class="text-center d-flex">
-                        <th class="col-sm-1">ID Proveedor</th>
-                        <th class="col-sm-2">Nombre</th>
-                        <th class="col-sm-2">Dirección</th>
-                        <th class="col-sm-1">Ciudad</th>
-                        <th class="col-sm-2">Número de teléfono</th>
-                        <th class="col-sm-2">Correo</th>
-                        <th class="col-sm-3">Acciones</th>
+                    <tr>
+                        <th class="text-center">ID Proveedor</th>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Dirección</th>
+                        <th class="text-center">Ciudad</th>
+                        <th class="text-center">Número de teléfono</th>
+                        <th class="text-center">Correo</th>
+                        <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
                 <%
@@ -76,16 +81,16 @@
                         p = iter.next();
                 %>
                 <tbody>
-                    <tr class="text-center d-flex">
-                        <td class="col-sm-1"><%= p.getIdproveedor()%></td>
-                        <td class="col-sm-2"><%= p.getNombre()%></td>
-                        <td class="col-sm-2"><%= p.getDireccion()%></td>
-                        <td class="col-sm-1"><%= p.getCiudad()%></td>
-                        <td class="col-sm-2"><%= p.getNumtel()%></td>
-                        <td class="col-sm-2"><%= p.getCorreo()%></td>
-                        <td class="col-sm-3">
-                            <a class="btn btn-success btn-dark bg-dark " href="controladorcliente?accion=Editarp&idp=<%=   p.getIdproveedor()%>">Editar</a>
-                            <a class="btn btn-danger  btn-warning"  href="controladorcliente?accion=Eliminarp&idp=<%= p.getIdproveedor()%>">Eliminar</a>                
+                    <tr >
+                        <td ><%= p.getIdproveedor()%></td>
+                        <td ><%= p.getNombre()%></td>
+                        <td><%= p.getDireccion()%></td>
+                        <td ><%= p.getCiudad()%></td>
+                        <td ><%= p.getNumtel()%></td>
+                        <td ><%= p.getCorreo()%></td>
+                        <td>
+                            <a class="btn btn-success btn-dark bg-dark btn-sm" href="controladorcliente?accion=Editarp&idp=<%=   p.getIdproveedor()%>">Editar</a>
+                            <a class="btn btn-danger  btn-warning btn-sm"  href="controladorcliente?accion=Eliminarp&idp=<%= p.getIdproveedor()%>">Eliminar</a>                
                         </td>
                     </tr>
                     <%}%>

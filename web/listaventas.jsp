@@ -47,18 +47,18 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>-->
         </nav>
-        <div class="container">
+        <div class="col-md-12">
             <h1>Reporte Ventas</h1>
             <br>
             <br>
-            <table class="table table-light">
+           <table class="col-md-12 tbl table table-bordered">
                 <thead class="thead-light">
-                    <tr class="text-center d-flex">
-                        <th class="col-sm-1">ID Compra</th>
-                        <th class="col-sm-2">ID Cliente</th>
-                        <th class="col-sm-2">Fecha</th>
-                        <th class="col-sm-2">ID Producto</th>
-                        <th class="col-sm-2">Cantidad</th>
+                    <tr >
+                        <th class="text-center">ID Compra</th>
+                        <th class="text-center">ID Cliente</th>
+                        <th class="text-center">Fecha</th>
+                        <th class="text-center">ID Producto</th>
+                        <th class="text-center">Cantidad</th>
                     </tr>
                 </thead>
                 <%
@@ -71,12 +71,12 @@
                         comp = iter.next();
                 %>
                 <tbody>
-                    <tr class="text-center d-flex">
-                        <td class="col-sm-1"><%= comp.getIdcompra() %></td>
-                        <td class="col-sm-2"><%= comp.getIdcliente() %></td>
-                        <td class="col-sm-2"><%= comp.getFecha() %></td>
-                        <td class="col-sm-2"><%= comp.getIdproducto() %></td>
-                        <td class="col-sm-2"><%= comp.getCantidad() %></td>
+                    <tr >
+                        <td><%= comp.getIdcompra() %></td>
+                        <td ><%= comp.getIdcliente() %></td>
+                        <td ><%= comp.getFecha() %></td>
+                        <td ><%= comp.getIdproducto() %></td>
+                        <td ><%= comp.getCantidad() %></td>
                     </tr>
                     <%}%>
                 </tbody>

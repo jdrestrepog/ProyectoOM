@@ -14,29 +14,63 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div class="container">
+        <div class="container border">
             <div>
-                <h1>Agregar Producto</h1>
-                <form action="controladorcliente">
-                    ID Producto: <br>
-                    <input class="form-control" type="text"   name="txtidproducto"><br>
-                    Marca: <br>
-                    <input class="form-control" type="text"   name="txtmarca"><br>
-                     Nombre <br>
-                    <input class="form-control" type="text"   name="txtnombre"><br>
-                    Referencia: <br>
-                    <input class="form-control" type="text"   name="txtreferencia"><br>
-                    Descripcion: <br>
-                    <input class="form-control" type="text"   name="txtdescripcion"><br>
-                    Precio Compra: <br>
-                    <input class="form-control" type="text"   name="txtpreciocompra"><br>
-                    Precio Venta: <br>
-                    <input class="form-control" type="text"   name="txtprecioventa"><br>
-                    Oferta: <br>
-                    <input class="form-control" type="text"   name="txtoferta"><br>
-                    <br>
-                    <input class="btn btn-primary" type="submit" name="accion" value="agregarprod"><br>
-                </form>  
+            
+                <h2 class="border-bottom">Agregar Producto</h2>
+                <form class="form-row" action="controladorcliente">
+                     <div class="form-group col-md-6">
+                        <label class="col-md-3">ID Producto:</label>
+                        <div class="col-md-12"> 
+                            <input class="form-control" type="text"   name="txtidproducto">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-3">Marca:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtmarca">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3">Nombre:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtnombre">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-3">Referencia:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtreferencia">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3">Descripcion:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtdescripcion">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-5"> Precio Compra:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtpreciocompra">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-5">Precio Venta: </label>
+                        <div class="col-md-12"> 
+                          <input class="form-control" type="text"   name="txtprecioventa">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-3">Oferta: </label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtoferta">
+                        </div>
+                    </div>
+                      <div class="form-group col-md-6">
+                    <input class="btn btn-primary" type="submit" name="accion" value="agregarprod">
+               </div>
+                    </form>  
             </div>
         </div>
     </body>

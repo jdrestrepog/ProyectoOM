@@ -47,13 +47,19 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>-->
         </nav>
-        <div class="container">
-            <h1>Clientes</h1>
-            <a class="btn btn-success btn-dark bg-dark" href="controladorcliente?accion=add">Agregar Cliente</a>
-            <br>
-            <br>
-            <table class="table table-bordered">
-                <thead>
+        <div class="col-md-12">
+            <br/>
+            <div class="row" >
+                <div class="col-md-6 text-left"> 
+                    <h2>Clientes</h2>
+                </div>
+                <div class="col-md-6 text-right" > 
+                    <a class="btn  btn-success btn-sm" href="controladorcliente?accion=add">Agregar Cliente</a>         
+                </div>
+            </div>
+
+            <table class="col-md-12 tbl table table-bordered">
+                <thead class="thead-light">
                     <tr>
                         <th class="text-center">ID Cliente</th>
                         <th class="text-center">Tipo Documento</th>
@@ -74,15 +80,15 @@
                 %>
                 <tbody>
                     <tr>
-                        <td class="text-center"><%= clie.getIdcliente()%></td>
+                        <td class="text-center"><%= clie.getIdcliente()%></td>  
                         <td class="text-center"><%= clie.getTipodoc()%></td>
                         <td class="text-center"><%= clie.getNumerodoc()%></td>
                         <td class="text-center"><%= clie.getPrimernombre()%></td>
                         <td class="text-center"><%= clie.getPrimerapellido()%></td>
                         <td class="text-center"><%= clie.getCorreo()%></td>
                         <td>
-                            <a class="btn btn-warning btn-dark bg-dark" href="controladorcliente?accion=Editar&id=<%=   clie.getIdcliente()%>">Editar</a>
-                            <a class="btn btn-danger" href="controladorcliente?accion=Eliminar&id=<%=  clie.getIdcliente()%>">Eliminar</a>
+                            <a class="btn btn-warning btn-dark bg-dark btn-sm" href="controladorcliente?accion=Editar&id=<%=   clie.getIdcliente()%>">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="controladorcliente?accion=Eliminar&id=<%=  clie.getIdcliente()%>">Eliminar</a>
                         </td>
                     </tr>
                     <%}%>

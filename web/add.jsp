@@ -13,44 +13,104 @@
         <link rel="stylesheet" href="mycss.css">
         <title>JSP Page</title>
     </head>
-    <body>
-        <div class="container">
+    <body style="height: 100vh; ">
+        <div class="container border">
             <div>
-                <h1>Agregar cliente</h1>
-                <form action="controladorcliente">
-                    ID Cliente: <br>
-                    <input class="form-control" type="text"   name="txtidcliente"><br>
-                    Tipo Documento: <br>
-                    <input class="form-control" placeholder="1-Cedula 2-Nit" type="text"   name="txttipodoc"><br>
-                    Numero Documento: <br>
-                    <input class="form-control" type="text"   name="txtnumerodoc"><br>
-                    Primer Nombre: <br>
-                    <input class="form-control" type="text"   name="txtprimernombre"><br>
-                    Segundo Nombre: <br>
-                    <input class="form-control" type="text"   name="txtsegundonombre"><br>
-                    Primer Apellido: <br>
-                    <input class="form-control" type="text"   name="txtprimerapellido"><br>
-                    Segundo Apellido: <br>
-                    <input class="form-control" type="text"   name="txtsegundoapellido"><br>
-                    Correo: <br>
-                    <input class="form-control" type="text"   name="txtcorreo"><br>
-                    Telefono: <br>
-                    <input class="form-control" type="text"   name="txttelefono"><br>
-                    Direccion: <br>
-                    <input class="form-control" type="text"   name="txtdireccion"><br>
-                    Ciudad: <br>
-                    <input class="form-control" type="text"   name="txtciudad"><br>
-                    Departamento: <br>
-                    <input class="form-control" type="text"   name="txdepartamento"><br>
-                    Pais: <br>
-                    <input class="form-control" type="text"   name="txtpais"><br>
-                    Password: <br>
-                    <input type="text"   name="txtpass"> <br>
-                    <br>
-                    Tipo Cliente: <br>
-                    <input type="text" placeholder="1-Administrador 2-Cliente"  name="txttipocliente"> <br>
-                    <br>
-                    <input class="btn btn-primary" type="submit" name="accion" value="agregar"><br>
+                <h2 class="border-bottom">Agregar cliente</h2>
+                <form class="form-row" style="overflow-x: hidden; overflow-y: auto; height: 90vh" action="controladorcliente">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-3">ID Cliente:</label>
+                        <div class="col-md-12"> 
+                            <input class="form-control" type="text"   name="txtidcliente">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4">Tipo Documento:</label>
+                        <div class="col-md-12"> 
+                        <input class="form-control" placeholder="1-Cedula 2-Nit" type="text"   name="txttipodoc"/>
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-4">Numero Documento:</label>
+                        <div class="col-md-12"> 
+                            <input class="form-control" type="text"   name="txtnumerodoc"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4">Primer Nombre:</label>
+                        <div class="col-md-12"> 
+                            <input class="form-control" type="text"   name="txtprimernombre"/> 
+                        </div>
+                    </div>
+                   <div class="form-group col-md-6">
+                        <label class="col-md-4">Segundo Nombre:</label>
+                        <div class="col-md-12"> 
+                             <input class="form-control" type="text"   name="txtsegundonombre"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4">Primer Apellido:</label>
+                        <div class="col-md-12"> 
+                             <input class="form-control" type="text"   name="txtprimerapellido"/>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4">Segundo Apellido:</label>
+                        <div class="col-md-12"> 
+                            <input class="form-control" type="text"   name="txtsegundoapellido"/>
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-4">Correo:</label>
+                        <div class="col-md-12"> 
+                            <input class="form-control" type="text"   name="txtcorreo">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-4">Telefono:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txttelefono">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-4">Direccion:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtdireccion">
+                        </div>
+                    </div>
+                      <div class="form-group col-md-6">
+                        <label class="col-md-4">Ciudad:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtciudad">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-4">Departamento:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txdepartamento">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-4">Pais:</label>
+                        <div class="col-md-12"> 
+                           <input class="form-control" type="text"   name="txtpais">
+                        </div>
+                    </div>
+                        <div class="form-group col-md-6">
+                        <label class="col-md-4">Password:</label>
+                        <div class="col-md-12"> 
+                            <input type="text"  class="form-control"  name="txtpass">
+                        </div>
+                    </div>
+                        <div class="form-group col-md-6">
+                        <label class="col-md-4">Tipo Cliente:</label>
+                        <div class="col-md-12"> 
+                           <input type="text" placeholder="1-Administrador 2-Cliente"  class="form-control" name="txttipocliente">
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                    <input class="btn btn-primary" type="submit" name="accion" value="agregar">
+                    </div>
                 </form>  
             </div>
         </div>
