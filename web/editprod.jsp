@@ -26,7 +26,7 @@
                     p = c.listprod(idproducto);
 
                 %>
-                <h1>Modificar Persona</h1>
+                <h1>Modificar Producto</h1>
                 <form action="controladorcliente">
                     Id Producto:<br>
                     <input class="form-control" type="text" name="txtidproducto" value="<%= p.getIdproducto()%>"><br>
@@ -38,34 +38,12 @@
                     <input class="form-control" type="text" name="txtreferencia" value="<%= p.getReferencia()%>"><br>
                     Descripción: <br>
                     <input class="form-control" type="text" name="txtdescripcion" value="<%= p.getDescripcion()%>"><br>
-                    Año Lanzamiento: <br>
-                    <input class="form-control" type="text" name="txtaniolanzamiento" value="<%= p.getAniolanzamiento()%>"><br>
-                    Familia Olfativa: <br>
-                    <input class="form-control" type="text" name="txtfamiliaolfativa" value="<%= p.getFamiliaolf()%>"><br>
-                    Nota salida: <br>
-                    <input class="form-control" type="text" name="txtnotasalida" value="<%= p.getNotasalida()%>"><br>
-                    Nota Corazón: <br>
-                    <input class="form-control" type="text" name="txtnotacorazon" value="<%= p.getNotacorazon()%>"><br>
-                    Nota fondo: <br>
-                    <input class="form-control" type="text" name="txtnotafondo" value="<%= p.getNotafondo()%>"><br>
-                    Categoria: <br>
-                    <input class="form-control" type="text" name="txtcategoria" value="<%= p.getCategoria()%>"><br>
-                    Tipo: <br>
-                    <input class="form-control" type="text" name="txttipo" value="<%= p.getTipo()%>"><br>
-                    Mililitros: <br>
-                    <input class="form-control" type="text" name="txtmililitros" value="<%= p.getMililitros()%>"><br>
-                    Onzas: <br>
-                    <input class="form-control" type="text" name="txtonzas" value="<%= p.getOnzas()%>"><br>
-                    Uso: <br>
-                    <input class="form-control" type="text" name="txtuso" value="<%= p.getUso()%>"><br>
+                   
                     Precio Compra: <br>
                     <input class="form-control" type="text" name="txtpreciocompra" value="<%= p.getPreciocomp()%>"><br>
                     Precio Venta: <br>
                     <input class="form-control" type="text" name="txtprecioventa" value="<%= p.getPrecioventa()%>"><br>
-                    Descuento: <br>
-                    <input class="form-control" type="text" name="txtdescuento" value="<%= p.getDescuento()%>"><br>
-                    Precio Descuento: <br>
-                    <input class="form-control" type="text" name="txtpreciodescuento" value="<%= p.getPreciodesc()%>"><br>
+             
                     Oferta: <br>
                     <input class="form-control" type="text" name="txtoferta" value="<%= p.getOferta()%>"><br>
 

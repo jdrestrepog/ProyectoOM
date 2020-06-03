@@ -39,27 +39,30 @@
                 </form>
         </nav>
 
-        <div class="container mt-2">
+        <div class="col-md-12">
             <div class="row">
                 <c:forEach var="p" items="${productos}">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="card">
                             <div class="card-header">
                                 <h4>${p.getNombre()}</h4>
                             </div>
                             <div class="card-body">
-                                <i> $. ${p.getPrecioventa()}</i>
-                                <img src="ControladorIMG?id=${p.getIdproducto()}"  width="200" height="180">
+                               <div class="text-center"> 
+                                <img src="ControladorIMG?id=${p.getIdproducto()}"  width="170" height="170"></div>
+                                <div class="text-center">  <i> $. ${p.getPrecioventa()}</i></div>
                             </div>
                             <div class="card-footer text-center">
                                 <label>${p.getNombre()}</label>
                                 <div>
-                                    <a href="Controlador?accion=AgregarCarrito&id=${p.getIdproducto()}" class="btn btn-outline-info">Agregar al carrito</a>
+                                    <a href="Controlador?accion=AgregarCarrito&id=${p.getIdproducto()}" class="btn btn-success">Agregar al carrito</a>
                                     <a href="Controlador?accion=Comprar&id=${p.getIdproducto()}" class="btn btn-danger">Comprar</a>
                                 </div>
                             </div>
                         </div>
-                    </div>    
+                                <hr>
+                    </div>  
+                             
                 </c:forEach>
             </div>
         </div>

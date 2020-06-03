@@ -235,7 +235,7 @@ public class Controlador extends HttpServlet {
                     
                     //Insertar en tabla compraprod   
                     con.agregarcompraprod(listacarrito.get(i).getIdproducto(), c.getIdcliente(), idcomp,Integer.toString(listacarrito.get(i).getCantidad()));
-                    enviarmail(Integer.toString(listacarrito.get(i).getCantidad()), inv, c.getIdcliente(), c.getDireccion(), c.getPrimernombre(), c.getPrimerapellido(), c.getCorreo(), c.getTelefono());
+                    //enviarmail(Integer.toString(listacarrito.get(i).getCantidad()), inv, c.getIdcliente(), c.getDireccion(), c.getPrimernombre(), c.getPrimerapellido(), c.getCorreo(), c.getTelefono());
                 }
                 
                 //Primero eliminamos todos los elementos de la lista

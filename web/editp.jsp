@@ -26,7 +26,7 @@
                     p = c.listp(idproveedor);
 
                 %>
-                <h1>Modificar Persona</h1>
+                <h1>Modificar Proveedor</h1>
                 <form action="controladorcliente">
                     Id Proveedor:<br>
                     <input class="form-control" type="text" name="txtidproveedor" value="<%= p.getIdproveedor()%>"><br>
@@ -42,8 +42,6 @@
                     <input class="form-control" type="text" name="txtpais" value="<%= p.getPais()%>"><br>
                     Telefono: <br>
                     <input class="form-control" type="text" name="txttelefono" value="<%= p.getNumtel()%>"><br>
-                    FAX: <br>
-                    <input class="form-control" type="text" name="txtfax" value="<%= p.getNumfax() %>"><br>
                     Correo: <br>
                     <input class="form-control" type="text" name="txtcorreo" value="<%= p.getCorreo() %>"><br>
                     

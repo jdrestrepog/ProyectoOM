@@ -99,7 +99,7 @@
                         <input type="text" value="$. ${totalpagar}0" readonly="" class="form-control">
                     </div>
                     <div class="card-footer">
-                        <a href="Controlador?accion=pago"         class="btn btn-info btn-block">Realizar Pago</a>
+                        <a href="Controlador?accion=pago"         class="btn btn-info btn-block">Comprar</a>
                         <a href="Controlador?accion=compra" class="btn btn-danger btn-block">Generar Compra</a>
                     </div>
                 </div>
